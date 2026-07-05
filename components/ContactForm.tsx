@@ -5,7 +5,7 @@ import { useState, FormEvent } from "react";
 const inputClasses =
   "w-full rounded-lg border border-white/15 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-colors focus:border-accent";
 
-const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID || "xrewjqdr";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
