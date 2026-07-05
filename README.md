@@ -25,9 +25,17 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 
 ## Logo
 
-`public/logo.png` is currently a generated placeholder. Drop in the real
-"ELEVATE / Creative media" logo file at that same path to replace it —
-no code changes needed, the navbar and footer already reference `/logo.png`.
+`public/logo.png` is a recreated version of the brand mark. Drop the
+original file at that same path to replace it — no code changes needed,
+the navbar and footer already reference `/logo.png`.
+
+## Contact form
+
+The form on `/about` posts to [Formspree](https://formspree.io). Sign up
+free, create a form, and copy the ID from the endpoint URL
+(`https://formspree.io/f/xxxxxxxx`) into `NEXT_PUBLIC_FORMSPREE_ID` — see
+`.env.example`. Until that's set, the form falls back to opening the
+visitor's email client instead.
 
 ## Build
 

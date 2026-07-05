@@ -5,26 +5,50 @@ import { useState, FormEvent } from "react";
 const inputClasses =
   "w-full rounded-lg border border-white/15 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-colors focus:border-accent";
 
-export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+type Status = "idle" | "sending" | "sent" | "error";
+
+export default function ContactForm() {
+  const [status, setStatus] = useState<Status>("idle");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
-    const name = String(data.get("name") ?? "");
-    const email = String(data.get("email") ?? "");
-    const company = String(data.get("company") ?? "");
-    const message = String(data.get("message") ?? "");
 
-    const subject = encodeURIComponent(`New project inquiry from ${name || "your site"}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\n\n${message}`
-    );
+    if (!FORMSPREE_ID) {
+      const name = String(data.get("name") ?? "");
+      const email = String(data.get("email") ?? "");
+      const company = String(data.get("company") ?? "");
+      const message = String(data.get("message") ?? "");
+      const subject = encodeURIComponent(`New project inquiry from ${name || "your site"}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nCompany: ${company}\n\n${message}`
+      );
+      window.location.href = `mailto:hello@elevatecreativemedia.com?subject=${subject}&body=${body}`;
+      setStatus("sent");
+      form.reset();
+      return;
+    }
 
-    window.location.href = `mailto:hello@elevatecreativemedia.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
-    form.reset();
+    setStatus("sending");
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+
+      if (res.ok) {
+        setStatus("sent");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -67,15 +91,28 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-3.5 font-display text-sm tracking-wide text-white transition-transform hover:scale-105"
+        disabled={status === "sending"}
+        className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-3.5 font-display text-sm tracking-wide text-white shadow-[0_0_24px_-6px_rgba(229,67,67,0.7)] transition-all hover:scale-105 hover:shadow-[0_0_32px_-4px_rgba(229,67,67,0.85)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
       >
-        Send Message
+        {status === "sending" ? "Sending..." : "Send Message"}
       </button>
 
-      {submitted && (
+      {status === "sent" && (
         <p className="text-sm text-white/50">
-          Your email client should be opening now. Prefer another way to reach us?
+          {FORMSPREE_ID
+            ? "Thanks — your message is on its way. We'll be in touch within one business day."
+            : "Your email client should be opening now. Prefer another way to reach us?"}{" "}
           Email <a className="text-accent" href="mailto:hello@elevatecreativemedia.com">hello@elevatecreativemedia.com</a> directly.
+        </p>
+      )}
+
+      {status === "error" && (
+        <p className="text-sm text-white/50">
+          Something went wrong sending that. Please email us directly at{" "}
+          <a className="text-accent" href="mailto:hello@elevatecreativemedia.com">
+            hello@elevatecreativemedia.com
+          </a>
+          .
         </p>
       )}
     </form>

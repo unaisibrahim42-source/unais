@@ -58,7 +58,7 @@ export default function Navbar() {
 
           <Link
             href="/about"
-            className="hidden md:inline-flex items-center justify-center rounded-full bg-accent px-5 py-2 font-display text-sm tracking-wide text-white transition-transform hover:scale-105"
+            className="hidden md:inline-flex items-center justify-center rounded-full bg-accent px-5 py-2 font-display text-sm tracking-wide text-white shadow-[0_0_18px_-6px_rgba(229,67,67,0.7)] transition-all hover:scale-105 hover:shadow-[0_0_26px_-4px_rgba(229,67,67,0.85)]"
           >
             Start a Project
           </Link>
@@ -116,7 +116,7 @@ export default function Navbar() {
         <Link
           href="/about"
           onClick={() => setOpen(false)}
-          className="mt-4 inline-flex items-center justify-center rounded-full bg-accent px-8 py-3 font-display text-lg tracking-wide text-white"
+          className="mt-4 inline-flex items-center justify-center rounded-full bg-accent px-8 py-3 font-display text-lg tracking-wide text-white shadow-[0_0_24px_-6px_rgba(229,67,67,0.7)]"
         >
           Start a Project
         </Link>
