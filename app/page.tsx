@@ -42,35 +42,41 @@ export default function Home() {
     <>
       <section className="relative overflow-hidden bg-grid pb-24 pt-32 sm:pt-40">
         <div className="pointer-events-none absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-[140px]" />
-        <Container className="relative flex flex-col items-center text-center">
-          <Image
-            src="/logo.png"
-            alt="Elevate Creative Media"
-            width={640}
-            height={520}
-            priority
-            className="h-auto w-[280px] sm:w-[360px] md:w-[440px]"
-          />
+        <Container className="relative">
+          <div className="flex flex-col items-center gap-16 text-center lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:text-left">
+            <div className="flex flex-col items-center lg:items-start lg:max-w-xl">
+              <span className="font-display text-sm tracking-[0.35em] text-white/50">
+                AN AGENCY FOR BRANDS THAT REFUSE TO BLEND IN
+              </span>
 
-          <span className="mt-8 font-display text-sm tracking-[0.35em] text-white/50">
-            AN AGENCY FOR BRANDS THAT REFUSE TO BLEND IN
-          </span>
+              <div className="mt-14 w-full">
+                <HeroOrbit />
+              </div>
 
-          <div className="mt-14 w-full">
-            <HeroOrbit />
-          </div>
+              <p className="mt-14 max-w-xl text-lg text-white/60">
+                Elevate Creative Media builds brand strategy, content, and
+                growth systems for companies that want to be seen,
+                remembered, and chosen.
+              </p>
 
-          <p className="mt-14 max-w-xl text-lg text-white/60">
-            Elevate Creative Media builds brand strategy, content, and growth
-            systems for companies that want to be seen, remembered, and
-            chosen.
-          </p>
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                <Button href="/about">Start a Project</Button>
+                <Button href="/case-studies" variant="outline">
+                  See the Work
+                </Button>
+              </div>
+            </div>
 
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <Button href="/about">Start a Project</Button>
-            <Button href="/case-studies" variant="outline">
-              See the Work
-            </Button>
+            <div className="flex w-full items-center justify-center lg:w-auto lg:flex-1 lg:justify-end">
+              <Image
+                src="/logo.png"
+                alt="Elevate Creative Media"
+                width={640}
+                height={520}
+                priority
+                className="h-auto w-[280px] sm:w-[360px] lg:w-[440px] xl:w-[560px]"
+              />
+            </div>
           </div>
         </Container>
       </section>
