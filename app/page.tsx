@@ -46,20 +46,20 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex w-full flex-col items-center lg:w-auto lg:flex-1 lg:items-end">
+            <div className="flex w-full flex-col items-center text-center lg:w-auto lg:flex-1">
+              <h1 className="max-w-lg font-display text-4xl leading-[0.95] text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+                STOP BLENDING IN.
+                <br />
+                GET <span className="text-accent">UNMISSABLE</span>.
+              </h1>
               <Image
                 src="/logo.png"
                 alt="Elevate Creative Media"
                 width={640}
                 height={520}
                 priority
-                className="h-auto w-[280px] sm:w-[360px] lg:w-[440px] xl:w-[560px]"
+                className="mt-8 h-auto w-[280px] sm:w-[360px] lg:w-[440px] xl:w-[560px]"
               />
-              <h1 className="mt-8 max-w-lg text-center font-display text-4xl leading-[0.95] text-white sm:text-5xl lg:text-right lg:text-6xl xl:text-7xl">
-                STOP BLENDING IN.
-                <br />
-                GET <span className="text-accent">UNMISSABLE</span>.
-              </h1>
             </div>
           </div>
         </Container>
