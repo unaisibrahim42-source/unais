@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Logo({ className = "h-9 w-auto" }: { className?: string }) {
+export default function Logo({ className = "h-14 w-auto" }: { className?: string }) {
   return (
     <Link href="/" className="flex items-center gap-2 shrink-0" aria-label="Elevate Creative Media home">
       <Image

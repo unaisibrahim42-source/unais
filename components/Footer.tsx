@@ -15,7 +15,7 @@ export default function Footer() {
       <Container className="py-16">
         <div className="flex flex-col gap-12 md:flex-row md:justify-between">
           <div className="max-w-sm">
-            <Logo className="h-10 w-auto" />
+            <Logo className="h-16 w-auto" />
             <p className="mt-5 text-sm leading-relaxed text-white/50">
               We build brands that refuse to blend in — strategy, content, and
               growth for companies that want to be unmissable.

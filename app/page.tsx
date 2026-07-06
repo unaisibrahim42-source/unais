@@ -1,8 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import Container from "@/components/Container";
 import Button from "@/components/Button";
 import HeroOrbit from "@/components/HeroOrbit";
 import CTASection from "@/components/CTASection";
+import CaseStudyIcon from "@/components/CaseStudyIcon";
+import { CASE_STUDIES } from "@/lib/case-studies";
 
 const STATS = [
   { value: "120+", label: "Brands Elevated" },
@@ -34,31 +37,22 @@ const SERVICES = [
   },
 ];
 
-const CASE_STUDIES = [
-  {
-    client: "Northpeak Apparel",
-    result: "+240% Engagement",
-    summary: "A streetwear rebrand and launch campaign that sold out in 48 hours.",
-  },
-  {
-    client: "Vela Wellness",
-    result: "+3.1M Reach",
-    summary: "Short-form content engine that took a DTC brand from local to national.",
-  },
-  {
-    client: "Atlas Fitness",
-    result: "+68% Membership",
-    summary: "Full-funnel paid media and creative overhaul across every channel.",
-  },
-];
-
 export default function Home() {
   return (
     <>
       <section className="relative overflow-hidden bg-grid pb-24 pt-32 sm:pt-40">
         <div className="pointer-events-none absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-[140px]" />
         <Container className="relative flex flex-col items-center text-center">
-          <span className="font-display text-sm tracking-[0.35em] text-white/50">
+          <Image
+            src="/logo.png"
+            alt="Elevate Creative Media"
+            width={640}
+            height={520}
+            priority
+            className="h-auto w-[280px] sm:w-[360px] md:w-[440px]"
+          />
+
+          <span className="mt-8 font-display text-sm tracking-[0.35em] text-white/50">
             AN AGENCY FOR BRANDS THAT REFUSE TO BLEND IN
           </span>
 
@@ -157,12 +151,22 @@ export default function Home() {
           </div>
 
           <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {CASE_STUDIES.map((study) => (
-              <div
+            {CASE_STUDIES.slice(0, 3).map((study) => (
+              <Link
                 key={study.client}
-                className="flex flex-col justify-between rounded-2xl border border-white/10 p-8 transition-colors hover:border-accent/60"
+                href="/case-studies"
+                className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-[0_0_40px_-12px_rgba(229,67,67,0.5)]"
               >
-                <div>
+                <div className="relative h-24 overflow-hidden bg-grid bg-gradient-to-br from-accent/25 via-black to-black">
+                  <CaseStudyIcon
+                    name={study.icon}
+                    className="absolute -bottom-3 -right-3 h-20 w-20 text-white/10 transition-transform duration-300 group-hover:scale-110 group-hover:text-accent/20"
+                  />
+                  <span className="absolute left-4 top-4 rounded-full bg-black/60 px-3 py-1 font-display text-[10px] tracking-[0.15em] text-white/70 backdrop-blur-sm">
+                    {study.tag}
+                  </span>
+                </div>
+                <div className="flex flex-1 flex-col p-8">
                   <span className="font-display text-3xl text-accent">
                     {study.result}
                   </span>
@@ -173,7 +177,7 @@ export default function Home() {
                     {study.summary}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </Container>

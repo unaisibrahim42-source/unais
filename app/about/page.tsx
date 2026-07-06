@@ -37,6 +37,7 @@ export default function AboutPage() {
           </>
         }
         description="We're a creative agency built for brands that refuse to blend in — a small, senior team obsessed with strategy, craft, and results."
+        logo
       />
 
       <section className="py-24">

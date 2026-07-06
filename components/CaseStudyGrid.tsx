@@ -1,0 +1,151 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { CASE_STUDIES } from "@/lib/case-studies";
+import CaseStudyIcon from "@/components/CaseStudyIcon";
+import Button from "@/components/Button";
+
+export default function CaseStudyGrid() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const active = openIndex !== null ? CASE_STUDIES[openIndex] : null;
+
+  useEffect(() => {
+    if (openIndex === null) return;
+
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenIndex(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [openIndex]);
+
+  return (
+    <>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {CASE_STUDIES.map((study, i) => (
+          <button
+            key={study.client}
+            type="button"
+            onClick={() => setOpenIndex(i)}
+            className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] text-left transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-[0_0_40px_-12px_rgba(229,67,67,0.5)]"
+          >
+            <div className="relative h-32 overflow-hidden bg-grid bg-gradient-to-br from-accent/25 via-black to-black">
+              <CaseStudyIcon
+                name={study.icon}
+                className="absolute -bottom-3 -right-3 h-24 w-24 text-white/10 transition-transform duration-300 group-hover:scale-110 group-hover:text-accent/20"
+              />
+              <span className="absolute left-4 top-4 rounded-full bg-black/60 px-3 py-1 font-display text-[10px] tracking-[0.15em] text-white/70 backdrop-blur-sm">
+                {study.tag}
+              </span>
+              <span className="absolute bottom-4 left-4 flex items-center gap-2 text-accent">
+                <CaseStudyIcon name={study.icon} className="h-6 w-6" />
+              </span>
+            </div>
+
+            <div className="flex flex-1 flex-col p-8">
+              <div className="flex items-baseline gap-2">
+                <span className="font-display text-4xl text-accent">
+                  {study.result}
+                </span>
+                <span className="text-xs tracking-wide text-white/50">
+                  {study.resultLabel}
+                </span>
+              </div>
+              <h2 className="mt-4 font-display text-2xl tracking-wide text-white">
+                {study.client}
+              </h2>
+              <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-white/55">
+                {study.summary}
+              </p>
+              <span className="underline-accent mt-6 font-display text-xs tracking-wide text-white/70 group-hover:text-white">
+                View Full Story →
+              </span>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      {active && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm sm:p-6"
+          onClick={() => setOpenIndex(null)}
+        >
+          <div
+            className="max-h-[88vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-white/10 bg-black shadow-[0_0_80px_-20px_rgba(229,67,67,0.4)]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative h-40 overflow-hidden bg-grid bg-gradient-to-br from-accent/30 via-black to-black sm:h-48">
+              <CaseStudyIcon
+                name={active.icon}
+                className="absolute -bottom-6 -right-6 h-40 w-40 text-accent/15"
+              />
+              <span className="absolute left-6 top-6 rounded-full bg-black/60 px-3 py-1 font-display text-[10px] tracking-[0.15em] text-white/70 backdrop-blur-sm">
+                {active.tag}
+              </span>
+              <button
+                type="button"
+                onClick={() => setOpenIndex(null)}
+                aria-label="Close case study"
+                className="absolute right-6 top-6 flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-colors hover:bg-accent"
+              >
+                ✕
+              </button>
+              <div className="absolute bottom-6 left-6 flex items-center gap-3 text-accent">
+                <CaseStudyIcon name={active.icon} className="h-8 w-8" />
+              </div>
+            </div>
+
+            <div className="p-6 sm:p-10">
+              <div className="flex items-baseline gap-2">
+                <span className="font-display text-5xl text-accent">
+                  {active.result}
+                </span>
+                <span className="text-sm tracking-wide text-white/50">
+                  {active.resultLabel}
+                </span>
+              </div>
+              <h2 className="mt-3 font-display text-3xl tracking-wide text-white sm:text-4xl">
+                {active.client}
+              </h2>
+
+              <div className="mt-8 space-y-6">
+                <div>
+                  <span className="font-display text-xs tracking-[0.25em] text-accent">
+                    The Challenge
+                  </span>
+                  <p className="mt-2 text-sm leading-relaxed text-white/65">
+                    {active.challenge}
+                  </p>
+                </div>
+                <div>
+                  <span className="font-display text-xs tracking-[0.25em] text-accent">
+                    The Approach
+                  </span>
+                  <p className="mt-2 text-sm leading-relaxed text-white/65">
+                    {active.approach}
+                  </p>
+                </div>
+                <div>
+                  <span className="font-display text-xs tracking-[0.25em] text-accent">
+                    The Outcome
+                  </span>
+                  <p className="mt-2 text-sm leading-relaxed text-white/65">
+                    {active.outcome}
+                  </p>
+                </div>
+              </div>
+
+              <Button href="/about" className="mt-10 w-full sm:w-auto">
+                Start a Project Like This
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
