@@ -26,7 +26,7 @@ export default function ContactForm() {
       const body = encodeURIComponent(
         `Name: ${name}\nEmail: ${email}\nCompany: ${company}\n\n${message}`
       );
-      window.location.href = `mailto:hello@elevatecreativemedia.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:uistudio9@gmail.com?subject=${subject}&body=${body}`;
       setStatus("sent");
       form.reset();
       return;
@@ -102,15 +102,15 @@ export default function ContactForm() {
           {FORMSPREE_ID
             ? "Thanks — your message is on its way. We'll be in touch within one business day."
             : "Your email client should be opening now. Prefer another way to reach us?"}{" "}
-          Email <a className="text-accent" href="mailto:hello@elevatecreativemedia.com">hello@elevatecreativemedia.com</a> directly.
+          Email <a className="text-accent" href="mailto:uistudio9@gmail.com">uistudio9@gmail.com</a> directly.
         </p>
       )}
 
       {status === "error" && (
         <p className="text-sm text-white/50">
           Something went wrong sending that. Please email us directly at{" "}
-          <a className="text-accent" href="mailto:hello@elevatecreativemedia.com">
-            hello@elevatecreativemedia.com
+          <a className="text-accent" href="mailto:uistudio9@gmail.com">
+            uistudio9@gmail.com
           </a>
           .
         </p>

@@ -97,26 +97,26 @@ export default function AboutPage() {
             <div className="mt-10 space-y-6">
               <div>
                 <h3 className="font-display text-sm tracking-[0.2em] text-white/40">
-                  Email
+                  Founder
                 </h3>
-                <a
-                  href="mailto:hello@elevatecreativemedia.com"
-                  className="mt-2 block text-white transition-colors hover:text-accent"
-                >
-                  hello@elevatecreativemedia.com
-                </a>
+                <p className="mt-2 text-white">Muhammad Unais Ibrahim</p>
               </div>
               <div>
                 <h3 className="font-display text-sm tracking-[0.2em] text-white/40">
-                  Phone
+                  Email
                 </h3>
-                <p className="mt-2 text-white">+1 (555) 010-2029</p>
+                <a
+                  href="mailto:uistudio9@gmail.com"
+                  className="mt-2 block text-white transition-colors hover:text-accent"
+                >
+                  uistudio9@gmail.com
+                </a>
               </div>
               <div>
                 <h3 className="font-display text-sm tracking-[0.2em] text-white/40">
                   Studio
                 </h3>
-                <p className="mt-2 text-white">Los Angeles, CA</p>
+                <p className="mt-2 text-white">Midlands, United Kingdom</p>
               </div>
             </div>
           </div>

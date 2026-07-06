@@ -113,46 +113,48 @@ export default function CaseStudyGrid() {
                 {active.client}
               </h2>
 
-              {active.instagramUrl && (
-                <div className="mx-auto mt-8 w-full max-w-sm">
-                  <div className="overflow-hidden rounded-2xl border border-white/10">
-                    <InstagramEmbed url={active.instagramUrl} />
+              <div className="mt-8 sm:flex sm:gap-8">
+                {active.instagramUrl && (
+                  <div className="mx-auto w-full max-w-[220px] shrink-0 sm:mx-0">
+                    <div className="overflow-hidden rounded-2xl border border-white/10">
+                      <InstagramEmbed url={active.instagramUrl} />
+                    </div>
+                    <a
+                      href={active.instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 block text-center text-xs tracking-wide text-white/50 hover:text-accent"
+                    >
+                      View on Instagram ↗
+                    </a>
                   </div>
-                  <a
-                    href={active.instagramUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 block text-center text-xs tracking-wide text-white/50 hover:text-accent"
-                  >
-                    View the post on Instagram ↗
-                  </a>
-                </div>
-              )}
+                )}
 
-              <div className="mt-8 space-y-6">
-                <div>
-                  <span className="font-display text-xs tracking-[0.25em] text-accent">
-                    The Challenge
-                  </span>
-                  <p className="mt-2 text-sm leading-relaxed text-white/65">
-                    {active.challenge}
-                  </p>
-                </div>
-                <div>
-                  <span className="font-display text-xs tracking-[0.25em] text-accent">
-                    The Approach
-                  </span>
-                  <p className="mt-2 text-sm leading-relaxed text-white/65">
-                    {active.approach}
-                  </p>
-                </div>
-                <div>
-                  <span className="font-display text-xs tracking-[0.25em] text-accent">
-                    The Outcome
-                  </span>
-                  <p className="mt-2 text-sm leading-relaxed text-white/65">
-                    {active.outcome}
-                  </p>
+                <div className="mt-8 min-w-0 flex-1 space-y-6 sm:mt-0">
+                  <div>
+                    <span className="font-display text-xs tracking-[0.25em] text-accent">
+                      The Challenge
+                    </span>
+                    <p className="mt-2 text-sm leading-relaxed text-white/65">
+                      {active.challenge}
+                    </p>
+                  </div>
+                  <div>
+                    <span className="font-display text-xs tracking-[0.25em] text-accent">
+                      The Approach
+                    </span>
+                    <p className="mt-2 text-sm leading-relaxed text-white/65">
+                      {active.approach}
+                    </p>
+                  </div>
+                  <div>
+                    <span className="font-display text-xs tracking-[0.25em] text-accent">
+                      The Outcome
+                    </span>
+                    <p className="mt-2 text-sm leading-relaxed text-white/65">
+                      {active.outcome}
+                    </p>
+                  </div>
                 </div>
               </div>
 

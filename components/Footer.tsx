@@ -68,13 +68,13 @@ export default function Footer() {
               <ul className="mt-4 space-y-3">
                 <li>
                   <a
-                    href="mailto:hello@elevatecreativemedia.com"
+                    href="mailto:uistudio9@gmail.com"
                     className="text-sm text-white/70 transition-colors hover:text-accent"
                   >
-                    hello@elevatecreativemedia.com
+                    uistudio9@gmail.com
                   </a>
                 </li>
-                <li className="text-sm text-white/70">+1 (555) 010-2029</li>
+                <li className="text-sm text-white/70">Midlands, United Kingdom</li>
               </ul>
             </div>
           </div>
