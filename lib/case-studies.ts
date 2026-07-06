@@ -16,6 +16,7 @@ export type CaseStudy = {
   approach: string;
   outcome: string;
   icon: CaseStudyIconName;
+  instagramUrl?: string;
 };
 
 export const CASE_STUDIES: CaseStudy[] = [
@@ -35,19 +36,20 @@ export const CASE_STUDIES: CaseStudy[] = [
     icon: "rocket",
   },
   {
-    client: "Vela Wellness",
+    client: "Smash & Grub",
     tag: "Content + Social",
-    result: "+3.1M",
-    resultLabel: "Organic Reach",
+    result: "150K+",
+    resultLabel: "Views in One Week",
     summary:
-      "A short-form content engine and always-on social strategy that took a regional DTC brand national in one year.",
+      "A short-form content campaign for a limited-time burger giveaway that generated over 150K organic views and sold out in under two hours.",
     challenge:
-      "Vela had a loyal but small local following and no repeatable way to reach new audiences outside their home market.",
+      "Smash & Grub wanted to create buzz around a limited-time burger giveaway while increasing local brand awareness and driving footfall to the launch event.",
     approach:
-      "We stood up a short-form content engine — daily posting cadence, format testing, and an always-on community strategy — designed to compound rather than spike.",
+      "We developed a short-form content campaign focused on anticipation, high-energy food visuals, and social-first storytelling to maximise organic reach before and during the giveaway.",
     outcome:
-      "Organic reach grew to 3.1M within a year, turning a single-market brand into a nationally recognized name without new paid spend.",
+      "The campaign generated 150K+ organic views in just one week, attracted hundreds of customers, with 700 burgers given away, and the event sold out in under two hours — creating significant local buzz and strengthening the brand's presence both online and in-store.",
     icon: "trending",
+    instagramUrl: "https://www.instagram.com/p/DXzwT7kNZC0/",
   },
   {
     client: "Atlas Fitness",

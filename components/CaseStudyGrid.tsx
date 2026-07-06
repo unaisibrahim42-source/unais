@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { CASE_STUDIES } from "@/lib/case-studies";
 import CaseStudyIcon from "@/components/CaseStudyIcon";
 import Button from "@/components/Button";
+import InstagramEmbed from "@/components/InstagramEmbed";
 
 export default function CaseStudyGrid() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -111,6 +112,22 @@ export default function CaseStudyGrid() {
               <h2 className="mt-3 font-display text-3xl tracking-wide text-white sm:text-4xl">
                 {active.client}
               </h2>
+
+              {active.instagramUrl && (
+                <div className="mx-auto mt-8 w-full max-w-sm">
+                  <div className="overflow-hidden rounded-2xl border border-white/10">
+                    <InstagramEmbed url={active.instagramUrl} />
+                  </div>
+                  <a
+                    href={active.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 block text-center text-xs tracking-wide text-white/50 hover:text-accent"
+                  >
+                    View the post on Instagram ↗
+                  </a>
+                </div>
+              )}
 
               <div className="mt-8 space-y-6">
                 <div>
