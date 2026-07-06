@@ -46,7 +46,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex w-full flex-col items-center text-center lg:w-auto lg:flex-1">
+            <div className="flex w-full flex-col items-center text-center lg:w-auto lg:flex-1 lg:-translate-y-16">
               <h1 className="max-w-lg font-display text-4xl leading-[0.95] text-white sm:text-5xl lg:text-6xl xl:text-7xl">
                 STOP BLENDING IN.
                 <br />
