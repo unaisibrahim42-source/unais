@@ -5,36 +5,15 @@ import Button from "@/components/Button";
 import HeroOrbit from "@/components/HeroOrbit";
 import CTASection from "@/components/CTASection";
 import CaseStudyIcon from "@/components/CaseStudyIcon";
+import ServicesAccordion from "@/components/ServicesAccordion";
 import { CASE_STUDIES } from "@/lib/case-studies";
+import { SERVICES } from "@/lib/services";
 
 const STATS = [
   { value: "120+", label: "Brands Elevated" },
   { value: "3.2M", label: "Followers Grown" },
   { value: "48", label: "Countries Reached" },
   { value: "5x", label: "Avg. Engagement Lift" },
-];
-
-const SERVICES = [
-  {
-    title: "Brand Strategy",
-    description:
-      "Positioning, identity, and messaging that gives you a reason to be remembered.",
-  },
-  {
-    title: "Content Production",
-    description:
-      "Scroll-stopping photo, video, and campaign content built for every platform.",
-  },
-  {
-    title: "Growth & Paid Media",
-    description:
-      "Performance-driven media buying and funnels that turn attention into revenue.",
-  },
-  {
-    title: "Social Management",
-    description:
-      "Always-on community, content calendars, and channel strategy that compounds.",
-  },
 ];
 
 export default function Home() {
@@ -67,7 +46,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex w-full items-center justify-center lg:w-auto lg:flex-1 lg:justify-end">
+            <div className="flex w-full flex-col items-center lg:w-auto lg:flex-1 lg:items-end">
               <Image
                 src="/logo.png"
                 alt="Elevate Creative Media"
@@ -76,6 +55,11 @@ export default function Home() {
                 priority
                 className="h-auto w-[280px] sm:w-[360px] lg:w-[440px] xl:w-[560px]"
               />
+              <h1 className="mt-8 max-w-lg text-center font-display text-4xl leading-[0.95] text-white sm:text-5xl lg:text-right lg:text-6xl xl:text-7xl">
+                STOP BLENDING IN.
+                <br />
+                GET <span className="text-accent">UNMISSABLE</span>.
+              </h1>
             </div>
           </div>
         </Container>
@@ -117,20 +101,8 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2">
-            {SERVICES.map((service) => (
-              <div
-                key={service.title}
-                className="group bg-black p-8 transition-colors hover:bg-white/[0.03] sm:p-10"
-              >
-                <h3 className="font-display text-2xl text-white transition-colors group-hover:text-accent sm:text-3xl">
-                  {service.title}
-                </h3>
-                <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/55">
-                  {service.description}
-                </p>
-              </div>
-            ))}
+          <div className="mt-14">
+            <ServicesAccordion services={SERVICES.slice(0, 4)} />
           </div>
         </Container>
       </section>
