@@ -134,9 +134,9 @@ export default function GrowSurvey() {
           WE&apos;LL BE IN <span className="text-accent">TOUCH</span>.
         </h1>
         <p className="mt-6 max-w-md text-white/60">
-          We&apos;ve got what we need to put a plan together for{" "}
+          We&apos;ve got what we need to plan a strategy call for{" "}
           {answers.brand || "your brand"}. Expect an email from us within one
-          business day.
+          business day to lock in a time.
         </p>
       </div>
     );
@@ -256,7 +256,7 @@ export default function GrowSurvey() {
               Last Step
             </span>
             <h1 className="mt-4 font-display text-3xl leading-[1.05] text-white sm:text-4xl">
-              Where should we send your plan?
+              Let&apos;s book a strategy call.
             </h1>
 
             <form
@@ -296,7 +296,7 @@ export default function GrowSurvey() {
                 disabled={status === "sending"}
                 className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-3.5 font-display text-sm tracking-wide text-white shadow-[0_0_24px_-6px_rgba(229,67,67,0.7)] transition-all hover:scale-105 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
               >
-                {status === "sending" ? "Sending..." : "Get My Plan →"}
+                {status === "sending" ? "Sending..." : "Book My Call →"}
               </button>
 
               {status === "error" && (

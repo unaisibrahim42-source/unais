@@ -19,16 +19,12 @@ const STATS = [
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden pb-24 pt-32 sm:pt-40">
+      <section className="relative overflow-hidden pb-24 pt-28 sm:pt-36">
         <div className="pointer-events-none absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-[140px]" />
         <Container className="relative">
-          <div className="flex flex-col-reverse items-center gap-16 text-center lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:text-left">
+          <div className="flex flex-col-reverse items-center gap-12 text-center lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-10 lg:text-left">
             <div className="flex flex-col items-center lg:items-start lg:max-w-xl">
-              <span className="font-display text-2xl leading-tight tracking-wide text-white sm:text-3xl lg:text-4xl">
-                AN AGENCY FOR BRANDS THAT REFUSE TO BLEND IN
-              </span>
-
-              <div className="mt-14 w-full">
+              <div className="w-full">
                 <HeroOrbit />
               </div>
 
@@ -46,7 +42,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex w-full flex-col items-center text-center lg:w-auto lg:flex-1 lg:-translate-y-16">
+            <div className="flex w-full flex-col items-center text-center lg:w-auto lg:flex-1 lg:-translate-y-24">
               <h1 className="max-w-lg font-display text-4xl leading-[0.95] text-white sm:text-5xl lg:text-6xl xl:text-7xl">
                 STOP BLENDING IN.
                 <br />
@@ -61,7 +57,7 @@ export default function Home() {
                 width={640}
                 height={520}
                 priority
-                className="mt-8 h-auto w-[280px] sm:w-[360px] lg:w-[440px] xl:w-[560px]"
+                className="mt-6 h-auto w-[200px] sm:w-[260px] lg:w-[320px] xl:w-[380px]"
               />
             </div>
           </div>
