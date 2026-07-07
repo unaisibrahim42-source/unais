@@ -46,10 +46,10 @@ export default function AboutPage() {
             <span className="font-display text-sm tracking-[0.3em] text-accent">
               Our Story
             </span>
-            <h2 className="mt-4 font-display text-3xl leading-tight text-white sm:text-4xl">
+            <h2 className="mt-4 font-display text-3xl leading-tight text-black sm:text-4xl">
               BUILT FOR BRANDS THAT WANT TO BE UNMISSABLE
             </h2>
-            <div className="mt-6 space-y-5 text-white/60">
+            <div className="mt-6 space-y-5 text-black/60">
               <p>
                 Elevate Creative Media started with a simple frustration: too
                 many good brands were getting lost in noisy feeds and
@@ -67,11 +67,11 @@ export default function AboutPage() {
 
           <div className="space-y-6">
             {VALUES.map((value) => (
-              <div key={value.title} className="rounded-2xl border border-white/10 p-6">
-                <h3 className="font-display text-lg tracking-wide text-white">
+              <div key={value.title} className="rounded-2xl border border-black/10 p-6">
+                <h3 className="font-display text-lg tracking-wide text-black">
                   {value.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/55">
+                <p className="mt-2 text-sm leading-relaxed text-black/55">
                   {value.description}
                 </p>
               </div>
@@ -80,48 +80,48 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="border-t border-white/10 py-24">
+      <section className="border-t border-black/10 py-24">
         <Container className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <span className="font-display text-sm tracking-[0.3em] text-accent">
               Get In Touch
             </span>
-            <h2 className="mt-4 font-display text-3xl leading-tight text-white sm:text-4xl">
+            <h2 className="mt-4 font-display text-3xl leading-tight text-black sm:text-4xl">
               LET&apos;S START YOUR PROJECT
             </h2>
-            <p className="mt-6 max-w-md text-white/60">
+            <p className="mt-6 max-w-md text-black/60">
               Tell us a bit about your brand and where you want to go. We
               respond to every inquiry within one business day.
             </p>
 
             <div className="mt-10 space-y-6">
               <div>
-                <h3 className="font-display text-sm tracking-[0.2em] text-white/40">
+                <h3 className="font-display text-sm tracking-[0.2em] text-black/40">
                   Founder
                 </h3>
-                <p className="mt-2 text-white">Muhammad Unais Ibrahim</p>
+                <p className="mt-2 text-black">Muhammad Unais Ibrahim</p>
               </div>
               <div>
-                <h3 className="font-display text-sm tracking-[0.2em] text-white/40">
+                <h3 className="font-display text-sm tracking-[0.2em] text-black/40">
                   Email
                 </h3>
                 <a
                   href="mailto:uistudio9@gmail.com"
-                  className="mt-2 block text-white transition-colors hover:text-accent"
+                  className="mt-2 block text-black transition-colors hover:text-accent"
                 >
                   uistudio9@gmail.com
                 </a>
               </div>
               <div>
-                <h3 className="font-display text-sm tracking-[0.2em] text-white/40">
+                <h3 className="font-display text-sm tracking-[0.2em] text-black/40">
                   Studio
                 </h3>
-                <p className="mt-2 text-white">Midlands, United Kingdom</p>
+                <p className="mt-2 text-black">Midlands, United Kingdom</p>
               </div>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/10 p-8 sm:p-10">
+          <div className="rounded-2xl border border-black/10 p-8 sm:p-10">
             <ContactForm />
           </div>
         </Container>

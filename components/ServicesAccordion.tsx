@@ -15,31 +15,31 @@ export default function ServicesAccordion({ services }: { services: Service[] })
           <div
             key={service.title}
             className={`overflow-hidden rounded-2xl border transition-colors ${
-              open ? "border-accent/60" : "border-white/10"
+              open ? "border-accent/60" : "border-black/10"
             }`}
           >
             <button
               type="button"
               onClick={() => setOpenIndex(open ? null : i)}
               aria-expanded={open}
-              className="flex w-full items-center gap-5 p-6 text-left transition-colors hover:bg-white/[0.02] sm:p-8"
+              className="flex w-full items-center gap-5 p-6 text-left transition-colors hover:bg-black/[0.02] sm:p-8"
             >
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
                 <CaseStudyIcon name={service.icon} className="h-6 w-6" />
               </span>
 
               <div className="min-w-0 flex-1">
-                <span className="font-display text-xs text-white/30">
+                <span className="font-display text-xs text-black/30">
                   {service.number}
                 </span>
-                <h3 className="mt-1 font-display text-xl text-white sm:text-2xl">
+                <h3 className="mt-1 font-display text-xl text-black sm:text-2xl">
                   {service.title}
                 </h3>
               </div>
 
               <span
-                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-lg leading-none text-white transition-transform duration-300 ${
-                  open ? "rotate-45 border-accent text-accent" : "border-white/20"
+                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-lg leading-none text-black transition-transform duration-300 ${
+                  open ? "rotate-45 border-accent text-accent" : "border-black/20"
                 }`}
               >
                 +
@@ -53,14 +53,14 @@ export default function ServicesAccordion({ services }: { services: Service[] })
             >
               <div className="overflow-hidden">
                 <div className="px-6 pb-8 sm:px-8 sm:pl-[4.75rem]">
-                  <p className="max-w-2xl text-sm leading-relaxed text-white/55">
+                  <p className="max-w-2xl text-sm leading-relaxed text-black/55">
                     {service.description}
                   </p>
                   <ul className="mt-5 flex flex-wrap gap-2">
                     {service.deliverables.map((item) => (
                       <li
                         key={item}
-                        className="rounded-full border border-white/10 px-3 py-1 text-xs tracking-wide text-white/60"
+                        className="rounded-full border border-black/10 px-3 py-1 text-xs tracking-wide text-black/60"
                       >
                         {item}
                       </li>

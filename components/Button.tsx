@@ -10,7 +10,7 @@ const variants: Record<Variant, string> = {
   primary:
     "bg-accent text-white shadow-[0_0_24px_-6px_rgba(229,67,67,0.7)] hover:scale-105 hover:brightness-110 hover:shadow-[0_0_32px_-4px_rgba(229,67,67,0.85)]",
   outline:
-    "border border-white/30 text-white hover:border-accent hover:text-accent",
+    "border border-black/30 text-black hover:border-accent hover:text-accent",
 };
 
 export default function Button({

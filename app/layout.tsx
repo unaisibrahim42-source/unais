@@ -31,7 +31,7 @@ export default function RootLayout({
       lang="en"
       className={`${anton.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-black text-white font-sans">
+      <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

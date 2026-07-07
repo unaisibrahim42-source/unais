@@ -11,12 +11,12 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-black">
+    <footer className="border-t border-black/10 bg-white">
       <Container className="py-16">
         <div className="flex flex-col gap-12 md:flex-row md:justify-between">
           <div className="max-w-sm">
             <Logo className="h-16 w-auto" />
-            <p className="mt-5 text-sm leading-relaxed text-white/50">
+            <p className="mt-5 text-sm leading-relaxed text-black/50">
               We build brands that refuse to blend in — strategy, content, and
               growth for companies that want to be unmissable.
             </p>
@@ -24,7 +24,7 @@ export default function Footer() {
 
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
             <div>
-              <h3 className="font-display text-sm tracking-[0.2em] text-white/40">
+              <h3 className="font-display text-sm tracking-[0.2em] text-black/40">
                 Navigate
               </h3>
               <ul className="mt-4 space-y-3">
@@ -32,7 +32,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-white/70 transition-colors hover:text-accent"
+                      className="text-sm text-black/70 transition-colors hover:text-accent"
                     >
                       {link.label}
                     </Link>
@@ -42,7 +42,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="font-display text-sm tracking-[0.2em] text-white/40">
+              <h3 className="font-display text-sm tracking-[0.2em] text-black/40">
                 Follow
               </h3>
               <ul className="mt-4 space-y-3">
@@ -52,7 +52,7 @@ export default function Footer() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-white/70 transition-colors hover:text-accent"
+                      className="text-sm text-black/70 transition-colors hover:text-accent"
                     >
                       {social.label}
                     </a>
@@ -62,25 +62,25 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="font-display text-sm tracking-[0.2em] text-white/40">
+              <h3 className="font-display text-sm tracking-[0.2em] text-black/40">
                 Contact
               </h3>
               <ul className="mt-4 space-y-3">
                 <li>
                   <a
                     href="mailto:uistudio9@gmail.com"
-                    className="text-sm text-white/70 transition-colors hover:text-accent"
+                    className="text-sm text-black/70 transition-colors hover:text-accent"
                   >
                     uistudio9@gmail.com
                   </a>
                 </li>
-                <li className="text-sm text-white/70">Midlands, United Kingdom</li>
+                <li className="text-sm text-black/70">Midlands, United Kingdom</li>
               </ul>
             </div>
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/40 sm:flex-row">
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-black/10 pt-8 text-xs text-black/40 sm:flex-row">
           <p>© {new Date().getFullYear()} Elevate Creative Media. All rights reserved.</p>
           <p>Designed to be unmissable.</p>
         </div>
