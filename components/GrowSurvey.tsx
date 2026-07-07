@@ -128,12 +128,12 @@ export default function GrowSurvey() {
         <span className="font-display text-sm tracking-[0.3em] text-accent">
           You&apos;re In
         </span>
-        <h1 className="mt-4 font-display text-4xl leading-[0.95] text-black sm:text-5xl">
+        <h1 className="mt-4 font-display text-4xl leading-[0.95] text-white sm:text-5xl">
           THANKS, {answers.name.split(" ")[0]?.toUpperCase() || "THERE"}.
           <br />
           WE&apos;LL BE IN <span className="text-accent">TOUCH</span>.
         </h1>
-        <p className="mt-6 max-w-md text-black/60">
+        <p className="mt-6 max-w-md text-white/60">
           We&apos;ve got what we need to put a plan together for{" "}
           {answers.brand || "your brand"}. Expect an email from us within one
           business day.
@@ -149,7 +149,7 @@ export default function GrowSurvey() {
           type="button"
           onClick={goBack}
           aria-label="Back"
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-black/15 text-black transition-colors hover:border-accent hover:text-accent"
+          className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-accent hover:text-accent"
         >
           ←
         </button>
@@ -171,7 +171,7 @@ export default function GrowSurvey() {
             <span className="font-display text-sm tracking-[0.3em] text-accent">
               Question {step + 1} of {TOTAL_STEPS}
             </span>
-            <h1 className="mt-4 font-display text-3xl leading-[1.05] text-black sm:text-4xl">
+            <h1 className="mt-4 font-display text-3xl leading-[1.05] text-white sm:text-4xl">
               {current.question}
             </h1>
 
@@ -188,7 +188,7 @@ export default function GrowSurvey() {
                     if (e.key === "Enter" && answers.brand.trim()) goNext();
                   }}
                   placeholder={current.placeholder}
-                  className="w-full border-b-2 border-black/15 bg-transparent pb-3 text-2xl text-black outline-none placeholder:text-black/25 focus:border-accent"
+                  className="w-full border-b-2 border-white/15 bg-transparent pb-3 text-2xl text-white outline-none placeholder:text-white/25 focus:border-accent"
                 />
                 <button
                   type="button"
@@ -214,7 +214,7 @@ export default function GrowSurvey() {
                         className={`rounded-full border px-5 py-3 text-sm font-medium transition-colors ${
                           selected
                             ? "border-accent bg-accent text-white"
-                            : "border-black/15 text-black hover:border-accent"
+                            : "border-white/15 text-white hover:border-accent"
                         }`}
                       >
                         {option}
@@ -240,7 +240,7 @@ export default function GrowSurvey() {
                     key={option}
                     type="button"
                     onClick={() => selectSingle(current.key as "budget" | "timeline", option)}
-                    className="rounded-xl border border-black/15 px-6 py-4 text-left text-lg text-black transition-colors hover:border-accent hover:bg-accent/5"
+                    className="rounded-xl border border-white/15 px-6 py-4 text-left text-lg text-white transition-colors hover:border-accent hover:bg-accent/5"
                   >
                     {option}
                   </button>
@@ -255,7 +255,7 @@ export default function GrowSurvey() {
             <span className="font-display text-sm tracking-[0.3em] text-accent">
               Last Step
             </span>
-            <h1 className="mt-4 font-display text-3xl leading-[1.05] text-black sm:text-4xl">
+            <h1 className="mt-4 font-display text-3xl leading-[1.05] text-white sm:text-4xl">
               Where should we send your plan?
             </h1>
 
@@ -273,7 +273,7 @@ export default function GrowSurvey() {
                 value={answers.name}
                 onChange={(e) => setAnswers((a) => ({ ...a, name: e.target.value }))}
                 placeholder="Your name"
-                className="w-full border-b-2 border-black/15 bg-transparent pb-3 text-xl text-black outline-none placeholder:text-black/25 focus:border-accent"
+                className="w-full border-b-2 border-white/15 bg-transparent pb-3 text-xl text-white outline-none placeholder:text-white/25 focus:border-accent"
               />
               <input
                 type="email"
@@ -281,14 +281,14 @@ export default function GrowSurvey() {
                 value={answers.email}
                 onChange={(e) => setAnswers((a) => ({ ...a, email: e.target.value }))}
                 placeholder="Best email for you"
-                className="w-full border-b-2 border-black/15 bg-transparent pb-3 text-xl text-black outline-none placeholder:text-black/25 focus:border-accent"
+                className="w-full border-b-2 border-white/15 bg-transparent pb-3 text-xl text-white outline-none placeholder:text-white/25 focus:border-accent"
               />
               <input
                 type="tel"
                 value={answers.phone}
                 onChange={(e) => setAnswers((a) => ({ ...a, phone: e.target.value }))}
                 placeholder="Phone (optional)"
-                className="w-full border-b-2 border-black/15 bg-transparent pb-3 text-xl text-black outline-none placeholder:text-black/25 focus:border-accent"
+                className="w-full border-b-2 border-white/15 bg-transparent pb-3 text-xl text-white outline-none placeholder:text-white/25 focus:border-accent"
               />
 
               <button
@@ -300,7 +300,7 @@ export default function GrowSurvey() {
               </button>
 
               {status === "error" && (
-                <p className="text-sm text-black/50">
+                <p className="text-sm text-white/50">
                   Something went wrong. Email us directly at{" "}
                   <a className="text-accent" href="mailto:uistudio9@gmail.com">
                     uistudio9@gmail.com

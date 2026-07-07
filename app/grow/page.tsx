@@ -71,20 +71,20 @@ export default function GrowPage() {
           <span className="font-display text-sm tracking-[0.3em] text-accent">
             How It Works
           </span>
-          <h2 className="mt-4 font-display text-4xl leading-none text-black sm:text-5xl">
+          <h2 className="mt-4 font-display text-4xl leading-none text-white sm:text-5xl">
             A FOUR-STEP SYSTEM
           </h2>
 
-          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-black/10 bg-black/10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-black/10 sm:grid-cols-2 lg:grid-cols-4">
             {PROCESS.map((item) => (
-              <div key={item.step} className="bg-white p-8">
-                <span className="font-display text-3xl text-black/20">
+              <div key={item.step} className="bg-black p-8">
+                <span className="font-display text-3xl text-white/20">
                   {item.step}
                 </span>
-                <h3 className="mt-4 font-display text-xl tracking-wide text-black">
+                <h3 className="mt-4 font-display text-xl tracking-wide text-white">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-black/55">
+                <p className="mt-3 text-sm leading-relaxed text-white/55">
                   {item.description}
                 </p>
               </div>
@@ -93,12 +93,12 @@ export default function GrowPage() {
         </Container>
       </section>
 
-      <section className="border-t border-black/10 py-24">
+      <section className="border-t border-white/10 py-24">
         <Container>
           <span className="font-display text-sm tracking-[0.3em] text-accent">
             Where We Play
           </span>
-          <h2 className="mt-4 font-display text-4xl leading-none text-black sm:text-5xl">
+          <h2 className="mt-4 font-display text-4xl leading-none text-white sm:text-5xl">
             CHANNELS WE RUN
           </h2>
 
@@ -106,26 +106,26 @@ export default function GrowPage() {
             {CHANNELS.map((channel) => (
               <div
                 key={channel.title}
-                className="rounded-2xl border border-black/10 p-6 transition-colors hover:border-accent/60"
+                className="rounded-2xl border border-white/10 p-6 transition-colors hover:border-accent/60"
               >
-                <h3 className="font-display text-lg tracking-wide text-black">
+                <h3 className="font-display text-lg tracking-wide text-white">
                   {channel.title}
                 </h3>
-                <p className="mt-2 text-sm text-black/50">{channel.metric}</p>
+                <p className="mt-2 text-sm text-white/50">{channel.metric}</p>
               </div>
             ))}
           </div>
         </Container>
       </section>
 
-      <section className="border-t border-black/10 py-24">
+      <section className="border-t border-white/10 py-24">
         <Container className="grid gap-10 sm:grid-cols-3">
           {RESULTS.map((result) => (
             <div key={result.label} className="text-center sm:text-left">
               <div className="font-display text-5xl text-accent">
                 {result.value}
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-black/55">
+              <p className="mt-3 text-sm leading-relaxed text-white/55">
                 {result.label}
               </p>
             </div>

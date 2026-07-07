@@ -16,7 +16,7 @@ export default function PageHero({
   logo?: boolean;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-black/10 bg-grid pb-20 pt-36 sm:pt-40">
+    <section className="relative overflow-hidden border-b border-white/10 pb-20 pt-36 sm:pt-40">
       <div className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-accent/20 blur-[120px]" />
       <Container className="relative">
         <div
@@ -30,11 +30,11 @@ export default function PageHero({
             <span className="font-display text-sm tracking-[0.3em] text-accent">
               {eyebrow}
             </span>
-            <h1 className="mt-5 max-w-4xl font-display text-5xl leading-[0.95] text-black sm:text-6xl md:text-7xl">
+            <h1 className="mt-5 max-w-4xl font-display text-5xl leading-[0.95] text-white sm:text-6xl md:text-7xl">
               {title}
             </h1>
             {description && (
-              <p className="mt-6 max-w-2xl text-lg text-black/60">{description}</p>
+              <p className="mt-6 max-w-2xl text-lg text-white/60">{description}</p>
             )}
             {children}
           </div>

@@ -32,12 +32,12 @@ export default function CaseStudyGrid() {
             key={study.client}
             type="button"
             onClick={() => setOpenIndex(i)}
-            className="group flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-black/[0.02] text-left transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-[0_0_40px_-12px_rgba(229,67,67,0.5)]"
+            className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] text-left transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-[0_0_40px_-12px_rgba(229,67,67,0.5)]"
           >
-            <div className="relative h-32 overflow-hidden bg-grid bg-gradient-to-br from-accent/25 via-white to-white">
+            <div className="relative h-32 overflow-hidden bg-grid bg-gradient-to-br from-accent/25 via-black to-black">
               <CaseStudyIcon
                 name={study.icon}
-                className="absolute -bottom-3 -right-3 h-24 w-24 text-black/10 transition-transform duration-300 group-hover:scale-110 group-hover:text-accent/20"
+                className="absolute -bottom-3 -right-3 h-24 w-24 text-white/10 transition-transform duration-300 group-hover:scale-110 group-hover:text-accent/20"
               />
               <span className="absolute left-4 top-4 rounded-full bg-black/60 px-3 py-1 font-display text-[10px] tracking-[0.15em] text-white/70 backdrop-blur-sm">
                 {study.tag}
@@ -52,17 +52,17 @@ export default function CaseStudyGrid() {
                 <span className="font-display text-4xl text-accent">
                   {study.result}
                 </span>
-                <span className="text-xs tracking-wide text-black/50">
+                <span className="text-xs tracking-wide text-white/50">
                   {study.resultLabel}
                 </span>
               </div>
-              <h2 className="mt-4 font-display text-2xl tracking-wide text-black">
+              <h2 className="mt-4 font-display text-2xl tracking-wide text-white">
                 {study.client}
               </h2>
-              <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-black/55">
+              <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-white/55">
                 {study.summary}
               </p>
-              <span className="underline-accent mt-6 font-display text-xs tracking-wide text-black/70 group-hover:text-black">
+              <span className="underline-accent mt-6 font-display text-xs tracking-wide text-white/70 group-hover:text-white">
                 View Full Story →
               </span>
             </div>
@@ -76,10 +76,10 @@ export default function CaseStudyGrid() {
           onClick={() => setOpenIndex(null)}
         >
           <div
-            className="max-h-[88vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-black/10 bg-white shadow-[0_0_80px_-20px_rgba(229,67,67,0.4)]"
+            className="max-h-[88vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-white/10 bg-black shadow-[0_0_80px_-20px_rgba(229,67,67,0.4)]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative h-40 overflow-hidden bg-grid bg-gradient-to-br from-accent/30 via-white to-white sm:h-48">
+            <div className="relative h-40 overflow-hidden bg-grid bg-gradient-to-br from-accent/30 via-black to-black sm:h-48">
               <CaseStudyIcon
                 name={active.icon}
                 className="absolute -bottom-6 -right-6 h-40 w-40 text-accent/15"
@@ -105,25 +105,25 @@ export default function CaseStudyGrid() {
                 <span className="font-display text-5xl text-accent">
                   {active.result}
                 </span>
-                <span className="text-sm tracking-wide text-black/50">
+                <span className="text-sm tracking-wide text-white/50">
                   {active.resultLabel}
                 </span>
               </div>
-              <h2 className="mt-3 font-display text-3xl tracking-wide text-black sm:text-4xl">
+              <h2 className="mt-3 font-display text-3xl tracking-wide text-white sm:text-4xl">
                 {active.client}
               </h2>
 
               <div className="mt-8 sm:flex sm:gap-8">
                 {active.instagramUrl && (
                   <div className="mx-auto w-full max-w-[220px] shrink-0 sm:mx-0">
-                    <div className="overflow-hidden rounded-2xl border border-black/10">
+                    <div className="overflow-hidden rounded-2xl border border-white/10">
                       <InstagramEmbed url={active.instagramUrl} />
                     </div>
                     <a
                       href={active.instagramUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 block text-center text-xs tracking-wide text-black/50 hover:text-accent"
+                      className="mt-3 block text-center text-xs tracking-wide text-white/50 hover:text-accent"
                     >
                       View on Instagram ↗
                     </a>
@@ -135,7 +135,7 @@ export default function CaseStudyGrid() {
                     <span className="font-display text-xs tracking-[0.25em] text-accent">
                       The Challenge
                     </span>
-                    <p className="mt-2 text-sm leading-relaxed text-black/65">
+                    <p className="mt-2 text-sm leading-relaxed text-white/65">
                       {active.challenge}
                     </p>
                   </div>
@@ -143,7 +143,7 @@ export default function CaseStudyGrid() {
                     <span className="font-display text-xs tracking-[0.25em] text-accent">
                       The Approach
                     </span>
-                    <p className="mt-2 text-sm leading-relaxed text-black/65">
+                    <p className="mt-2 text-sm leading-relaxed text-white/65">
                       {active.approach}
                     </p>
                   </div>
@@ -151,7 +151,7 @@ export default function CaseStudyGrid() {
                     <span className="font-display text-xs tracking-[0.25em] text-accent">
                       The Outcome
                     </span>
-                    <p className="mt-2 text-sm leading-relaxed text-black/65">
+                    <p className="mt-2 text-sm leading-relaxed text-white/65">
                       {active.outcome}
                     </p>
                   </div>

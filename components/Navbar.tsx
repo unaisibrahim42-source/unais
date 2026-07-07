@@ -30,7 +30,7 @@ export default function Navbar() {
       <header
         className={`sticky top-0 z-50 transition-colors duration-300 ${
           scrolled
-            ? "bg-white/70 backdrop-blur-md border-b border-black/10"
+            ? "bg-black/70 backdrop-blur-md border-b border-white/10"
             : "bg-transparent border-b border-transparent"
         }`}
       >
@@ -46,7 +46,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     className={`underline-accent font-display text-sm tracking-wide transition-colors ${
-                      isActive ? "active text-black" : "text-black/70 hover:text-black"
+                      isActive ? "active text-white" : "text-white/70 hover:text-white"
                     }`}
                   >
                     {link.label}
@@ -71,17 +71,17 @@ export default function Navbar() {
             className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
           >
             <span
-              className={`block h-0.5 w-6 bg-black transition-transform duration-300 ${
+              className={`block h-0.5 w-6 bg-white transition-transform duration-300 ${
                 open ? "translate-y-2 rotate-45" : ""
               }`}
             />
             <span
-              className={`block h-0.5 w-6 bg-black transition-opacity duration-300 ${
+              className={`block h-0.5 w-6 bg-white transition-opacity duration-300 ${
                 open ? "opacity-0" : "opacity-100"
               }`}
             />
             <span
-              className={`block h-0.5 w-6 bg-black transition-transform duration-300 ${
+              className={`block h-0.5 w-6 bg-white transition-transform duration-300 ${
                 open ? "-translate-y-2 -rotate-45" : ""
               }`}
             />
@@ -90,7 +90,7 @@ export default function Navbar() {
       </header>
 
       <div
-        className={`fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 overflow-y-auto bg-white px-6 py-24 transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 overflow-y-auto bg-black px-6 py-24 transition-opacity duration-300 md:hidden ${
           open ? "opacity-100 visible" : "pointer-events-none invisible opacity-0"
         }`}
       >
@@ -104,7 +104,7 @@ export default function Navbar() {
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className={`font-display text-3xl tracking-wide ${
-                    isActive ? "text-accent" : "text-black"
+                    isActive ? "text-accent" : "text-white"
                   }`}
                 >
                   {link.label}
