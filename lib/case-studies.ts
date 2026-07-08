@@ -20,12 +20,23 @@ export type CaseStudy = {
   instagramUrl?: string;
 };
 
+export function splitResultLabel(label: string): {
+  unit: string | null;
+  detail: string;
+} {
+  const words = label.split(" ");
+  if (words[0] === "Views") {
+    return { unit: "Views", detail: words.slice(1).join(" ") };
+  }
+  return { unit: null, detail: label };
+}
+
 export const CASE_STUDIES: CaseStudy[] = [
   {
     client: "Smash & Grub",
     tag: "Brand + Launch Campaign",
     result: "150K+",
-    resultLabel: "Views in One Week",
+    resultLabel: "Views in 1 Week",
     summary:
       "A short-form content campaign for a limited-time burger giveaway that generated over 150K organic views and sold out in under two hours.",
     challenge:
@@ -41,7 +52,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     client: "OGZ",
     tag: "Content + Social",
     result: "200K+",
-    resultLabel: "Views in One Week",
+    resultLabel: "Views in 1 Week",
     summary:
       "A multi-location content push for Birmingham's OGZ, turning munch boxes and loaded fries into scroll-stopping short-form video that pulled in over 200K views in a single week.",
     challenge:

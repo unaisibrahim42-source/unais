@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CASE_STUDIES } from "@/lib/case-studies";
+import { CASE_STUDIES, splitResultLabel } from "@/lib/case-studies";
 import CaseStudyIcon from "@/components/CaseStudyIcon";
 import AnimatedNumber from "@/components/AnimatedNumber";
 import Button from "@/components/Button";
@@ -28,42 +28,46 @@ export default function CaseStudyGrid() {
   return (
     <>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {CASE_STUDIES.map((study, i) => (
-          <button
-            key={study.client}
-            type="button"
-            onClick={() => setOpenIndex(i)}
-            className="group flex flex-col rounded-2xl border-2 border-accent/60 bg-black p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_40px_-12px_rgba(229,67,67,0.5)] sm:p-7"
-          >
-            <div className="flex items-start justify-between gap-3">
-              <span className="font-display text-[10px] tracking-[0.2em] text-white/40">
+        {CASE_STUDIES.map((study, i) => {
+          const { unit, detail } = splitResultLabel(study.resultLabel);
+          return (
+            <button
+              key={study.client}
+              type="button"
+              onClick={() => setOpenIndex(i)}
+              className="group flex min-h-[260px] flex-col justify-between rounded-2xl border-2 border-accent/60 bg-black p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_40px_-12px_rgba(229,67,67,0.5)] sm:p-7"
+            >
+              <span className="font-display text-[10px] tracking-[0.15em] text-white/50">
                 {study.tag}
               </span>
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent transition-transform duration-300 group-hover:scale-110">
-                <CaseStudyIcon name="megaphone" className="h-4 w-4" />
-              </span>
-            </div>
 
-            <div className="mt-10 flex flex-wrap items-baseline gap-2">
-              <AnimatedNumber
-                value={study.result}
-                className="font-display text-3xl text-accent sm:text-4xl"
-              />
-              <span className="text-[11px] tracking-wide text-white/45">
-                {study.resultLabel}
-              </span>
-            </div>
-            <h2 className="mt-3 font-display text-2xl tracking-wide text-white">
-              {study.client}
-            </h2>
-            <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-white/55">
-              {study.summary}
-            </p>
-            <span className="underline-accent mt-6 font-display text-xs tracking-wide text-white/70 group-hover:text-white">
-              View Full Story →
-            </span>
-          </button>
-        ))}
+              <div>
+                <div className="flex flex-wrap items-baseline gap-2">
+                  <AnimatedNumber
+                    value={study.result}
+                    className="font-display text-3xl text-accent sm:text-4xl"
+                  />
+                  {unit && (
+                    <span className="font-display text-3xl text-accent sm:text-4xl">
+                      {unit}
+                    </span>
+                  )}
+                  {detail && (
+                    <span className="font-display text-xs tracking-[0.1em] text-white/50">
+                      {detail}
+                    </span>
+                  )}
+                </div>
+                <h2 className="mt-3 font-display text-2xl tracking-wide text-white">
+                  {study.client}
+                </h2>
+                <span className="underline-accent mt-4 inline-block font-display text-xs tracking-wide text-white/70 group-hover:text-white">
+                  View Full Story →
+                </span>
+              </div>
+            </button>
+          );
+        })}
       </div>
 
       {active && (

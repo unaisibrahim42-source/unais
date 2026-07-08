@@ -3,11 +3,10 @@ import Image from "next/image";
 import Container from "@/components/Container";
 import Button from "@/components/Button";
 import CTASection from "@/components/CTASection";
-import CaseStudyIcon from "@/components/CaseStudyIcon";
 import ServicesAccordion from "@/components/ServicesAccordion";
 import AnimatedStat from "@/components/AnimatedStat";
 import AnimatedNumber from "@/components/AnimatedNumber";
-import { CASE_STUDIES } from "@/lib/case-studies";
+import { CASE_STUDIES, splitResultLabel } from "@/lib/case-studies";
 import { SERVICES } from "@/lib/services";
 
 const STATS = [
@@ -118,38 +117,42 @@ export default function Home() {
           </div>
 
           <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {CASE_STUDIES.slice(0, 3).map((study) => (
-              <Link
-                key={study.client}
-                href="/case-studies"
-                className="group flex flex-col rounded-2xl border-2 border-accent/60 bg-black p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_40px_-12px_rgba(229,67,67,0.5)] sm:p-7"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <span className="font-display text-[10px] tracking-[0.2em] text-white/40">
+            {CASE_STUDIES.slice(0, 3).map((study) => {
+              const { unit, detail } = splitResultLabel(study.resultLabel);
+              return (
+                <Link
+                  key={study.client}
+                  href="/case-studies"
+                  className="group flex min-h-[240px] flex-col justify-between rounded-2xl border-2 border-accent/60 bg-black p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_40px_-12px_rgba(229,67,67,0.5)] sm:p-7"
+                >
+                  <span className="font-display text-[10px] tracking-[0.15em] text-white/50">
                     {study.tag}
                   </span>
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent transition-transform duration-300 group-hover:scale-110">
-                    <CaseStudyIcon name="megaphone" className="h-4 w-4" />
-                  </span>
-                </div>
 
-                <div className="mt-10 flex flex-wrap items-baseline gap-2">
-                  <AnimatedNumber
-                    value={study.result}
-                    className="font-display text-3xl text-accent sm:text-4xl"
-                  />
-                  <span className="text-[11px] tracking-wide text-white/45">
-                    {study.resultLabel}
-                  </span>
-                </div>
-                <h3 className="mt-3 font-display text-xl tracking-wide text-white">
-                  {study.client}
-                </h3>
-                <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-white/55">
-                  {study.summary}
-                </p>
-              </Link>
-            ))}
+                  <div>
+                    <div className="flex flex-wrap items-baseline gap-2">
+                      <AnimatedNumber
+                        value={study.result}
+                        className="font-display text-3xl text-accent sm:text-4xl"
+                      />
+                      {unit && (
+                        <span className="font-display text-3xl text-accent sm:text-4xl">
+                          {unit}
+                        </span>
+                      )}
+                      {detail && (
+                        <span className="font-display text-xs tracking-[0.1em] text-white/50">
+                          {detail}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="mt-3 font-display text-xl tracking-wide text-white">
+                      {study.client}
+                    </h3>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </Container>
       </section>
