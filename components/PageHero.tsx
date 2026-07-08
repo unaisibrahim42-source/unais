@@ -16,7 +16,7 @@ export default function PageHero({
   logo?: boolean;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-white/10 pb-20 pt-36 sm:pt-40">
+    <section className="relative overflow-hidden bg-dots border-b border-white/10 pb-20 pt-36 sm:pt-40">
       <div className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-accent/20 blur-[120px]" />
       <Container className="relative">
         <div

@@ -67,9 +67,17 @@ body {
 
 .bg-grid {
   background-image:
-    linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
   background-size: 48px 48px;
+}
+
+.bg-dots {
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.16) 1.5px, transparent 1.5px),
+    radial-gradient(rgba(229, 67, 67, 0.35) 1.5px, transparent 1.5px);
+  background-size: 34px 34px, 58px 58px;
+  background-position: 0 0, 19px 27px;
 }
 
 @keyframes bob {

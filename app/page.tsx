@@ -19,7 +19,7 @@ const STATS = [
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden pb-24 pt-16 sm:pt-24">
+      <section className="relative overflow-hidden bg-dots pb-24 pt-16 sm:pt-24">
         <div className="pointer-events-none absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-[140px]" />
         <Container className="relative">
           <div className="flex flex-col-reverse items-center gap-12 text-center lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-10 lg:text-left">
