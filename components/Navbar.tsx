@@ -63,20 +63,20 @@ export default function Navbar() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+            className="relative z-50 flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-full bg-white shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5)] md:hidden"
           >
             <span
-              className={`block h-0.5 w-6 bg-white transition-transform duration-300 ${
+              className={`block h-0.5 w-5 rounded-full bg-accent transition-transform duration-300 ${
                 open ? "translate-y-2 rotate-45" : ""
               }`}
             />
             <span
-              className={`block h-0.5 w-6 bg-white transition-opacity duration-300 ${
+              className={`block h-0.5 w-5 rounded-full bg-accent transition-opacity duration-300 ${
                 open ? "opacity-0" : "opacity-100"
               }`}
             />
             <span
-              className={`block h-0.5 w-6 bg-white transition-transform duration-300 ${
+              className={`block h-0.5 w-5 rounded-full bg-accent transition-transform duration-300 ${
                 open ? "-translate-y-2 -rotate-45" : ""
               }`}
             />
