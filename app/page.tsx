@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Container from "@/components/Container";
 import Button from "@/components/Button";
-import HeroOrbit from "@/components/HeroOrbit";
 import CTASection from "@/components/CTASection";
 import CaseStudyIcon from "@/components/CaseStudyIcon";
 import ServicesAccordion from "@/components/ServicesAccordion";
@@ -22,43 +21,39 @@ export default function Home() {
       <section className="relative overflow-hidden bg-dots pb-24 pt-16 sm:pt-24">
         <div className="pointer-events-none absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-[140px]" />
         <Container className="relative">
-          <div className="flex flex-col-reverse items-center gap-12 text-center lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-10 lg:text-left">
-            <div className="flex flex-col items-center lg:items-start lg:max-w-xl">
-              <div className="w-full">
-                <HeroOrbit />
-              </div>
-
-              <p className="mt-14 max-w-xl text-lg text-white/60">
-                Elevate Creative Media builds brand strategy, content, and
-                growth systems for companies that want to be seen,
-                remembered, and chosen.
-              </p>
-
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <Button href="/about">Start a Project</Button>
-                <Button href="/case-studies" variant="outline">
-                  See the Work
-                </Button>
-              </div>
-            </div>
-
-            <div className="flex w-full flex-col items-center text-center lg:w-auto lg:flex-1 lg:-translate-y-32">
+          <div className="flex flex-col items-center gap-16 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+            <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
               <h1 className="max-w-lg font-display text-4xl leading-[0.95] text-white sm:text-5xl lg:text-6xl xl:text-7xl">
                 STOP BLENDING IN.
                 <br />
-                GET <span className="text-accent">UNMISSABLE</span>.
+                GET{" "}
+                <span className="text-accent [text-shadow:4px_4px_0_rgba(120,30,30,0.55)]">
+                  UNMISSABLE
+                </span>
+                .
               </h1>
               <Button href="/survey" size="lg" className="mt-8">
                 Grow →
               </Button>
+              <p className="mt-8 max-w-md text-center text-lg text-white/60">
+                Elevate Creative Media builds brand strategy, content, and
+                growth systems for companies that want to be seen,
+                remembered, and chosen.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center">
               <Image
                 src="/logo.png"
                 alt="Elevate Creative Media"
                 width={640}
                 height={520}
                 priority
-                className="mt-6 h-auto w-[200px] sm:w-[260px] lg:w-[320px] xl:w-[380px]"
+                className="h-auto w-[260px] sm:w-[340px] lg:w-[400px] xl:w-[460px]"
               />
+              <Button href="/case-studies" variant="outline" className="mt-8">
+                See the Work
+              </Button>
             </div>
           </div>
         </Container>

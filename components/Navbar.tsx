@@ -37,7 +37,7 @@ export default function Navbar() {
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-10">
           <Logo />
 
-          <ul className="hidden items-center gap-9 md:flex">
+          <ul className="hidden items-center gap-1.5 rounded-full bg-white p-1.5 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5)] md:flex">
             {NAV_LINKS.map((link) => {
               const isActive =
                 link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
@@ -45,8 +45,10 @@ export default function Navbar() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`underline-accent font-display text-sm tracking-wide transition-colors ${
-                      isActive ? "active text-white" : "text-white/70 hover:text-white"
+                    className={`inline-flex items-center justify-center rounded-full bg-gradient-to-b from-accent to-[#b93232] px-5 py-2.5 font-display text-sm tracking-wide text-white transition-all lg:px-6 ${
+                      isActive
+                        ? "ring-2 ring-black/15"
+                        : "hover:brightness-110 hover:scale-105"
                     }`}
                   >
                     {link.label}
@@ -55,13 +57,6 @@ export default function Navbar() {
               );
             })}
           </ul>
-
-          <Link
-            href="/about"
-            className="hidden md:inline-flex items-center justify-center rounded-full bg-accent px-5 py-2 font-display text-sm tracking-wide text-white shadow-[0_0_18px_-6px_rgba(229,67,67,0.7)] transition-all hover:scale-105 hover:shadow-[0_0_26px_-4px_rgba(229,67,67,0.85)]"
-          >
-            Start a Project
-          </Link>
 
           <button
             type="button"
@@ -90,11 +85,11 @@ export default function Navbar() {
       </header>
 
       <div
-        className={`fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 overflow-y-auto bg-black px-6 py-24 transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 z-40 flex flex-col items-center justify-center gap-5 overflow-y-auto bg-black px-6 py-24 transition-opacity duration-300 md:hidden ${
           open ? "opacity-100 visible" : "pointer-events-none invisible opacity-0"
         }`}
       >
-        <ul className="flex flex-col items-center gap-8">
+        <ul className="flex flex-col items-center gap-5">
           {NAV_LINKS.map((link) => {
             const isActive =
               link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
@@ -103,8 +98,8 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`font-display text-3xl tracking-wide ${
-                    isActive ? "text-accent" : "text-white"
+                  className={`inline-flex items-center justify-center rounded-full bg-gradient-to-b from-accent to-[#b93232] px-8 py-3.5 font-display text-xl tracking-wide text-white transition-all ${
+                    isActive ? "ring-2 ring-white/40" : ""
                   }`}
                 >
                   {link.label}
@@ -113,13 +108,6 @@ export default function Navbar() {
             );
           })}
         </ul>
-        <Link
-          href="/about"
-          onClick={() => setOpen(false)}
-          className="mt-4 inline-flex items-center justify-center rounded-full bg-accent px-8 py-3 font-display text-lg tracking-wide text-white shadow-[0_0_24px_-6px_rgba(229,67,67,0.7)]"
-        >
-          Start a Project
-        </Link>
       </div>
     </>
   );

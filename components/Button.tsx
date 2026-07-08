@@ -9,9 +9,9 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-accent text-white shadow-[0_0_24px_-6px_rgba(229,67,67,0.7)] hover:scale-105 hover:brightness-110 hover:shadow-[0_0_32px_-4px_rgba(229,67,67,0.85)]",
+    "bg-gradient-to-b from-accent to-[#b93232] text-white shadow-[0_0_24px_-6px_rgba(229,67,67,0.7)] hover:scale-105 hover:brightness-110 hover:shadow-[0_0_32px_-4px_rgba(229,67,67,0.85)]",
   outline:
-    "border border-white/30 text-white hover:border-accent hover:text-accent",
+    "border-2 border-accent text-white hover:bg-accent/10 hover:scale-105",
 };
 
 const sizes: Record<Size, string> = {
