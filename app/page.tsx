@@ -6,6 +6,7 @@ import CTASection from "@/components/CTASection";
 import CaseStudyIcon from "@/components/CaseStudyIcon";
 import ServicesAccordion from "@/components/ServicesAccordion";
 import AnimatedStat from "@/components/AnimatedStat";
+import AnimatedNumber from "@/components/AnimatedNumber";
 import { CASE_STUDIES } from "@/lib/case-studies";
 import { SERVICES } from "@/lib/services";
 
@@ -121,28 +122,32 @@ export default function Home() {
               <Link
                 key={study.client}
                 href="/case-studies"
-                className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-[0_0_40px_-12px_rgba(229,67,67,0.5)]"
+                className="group flex flex-col rounded-2xl border-2 border-accent/60 bg-black p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_40px_-12px_rgba(229,67,67,0.5)] sm:p-7"
               >
-                <div className="relative h-24 overflow-hidden bg-grid bg-gradient-to-br from-accent/25 via-black to-black">
-                  <CaseStudyIcon
-                    name={study.icon}
-                    className="absolute -bottom-3 -right-3 h-20 w-20 text-white/10 transition-transform duration-300 group-hover:scale-110 group-hover:text-accent/20"
-                  />
-                  <span className="absolute left-4 top-4 rounded-full bg-black/60 px-3 py-1 font-display text-[10px] tracking-[0.15em] text-white/70 backdrop-blur-sm">
+                <div className="flex items-start justify-between gap-3">
+                  <span className="font-display text-[10px] tracking-[0.2em] text-white/40">
                     {study.tag}
                   </span>
-                </div>
-                <div className="flex flex-1 flex-col p-8">
-                  <span className="font-display text-3xl text-accent">
-                    {study.result}
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent transition-transform duration-300 group-hover:scale-110">
+                    <CaseStudyIcon name="megaphone" className="h-4 w-4" />
                   </span>
-                  <h3 className="mt-4 font-display text-xl tracking-wide text-white">
-                    {study.client}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-white/55">
-                    {study.summary}
-                  </p>
                 </div>
+
+                <div className="mt-10 flex flex-wrap items-baseline gap-2">
+                  <AnimatedNumber
+                    value={study.result}
+                    className="font-display text-3xl text-accent sm:text-4xl"
+                  />
+                  <span className="text-[11px] tracking-wide text-white/45">
+                    {study.resultLabel}
+                  </span>
+                </div>
+                <h3 className="mt-3 font-display text-xl tracking-wide text-white">
+                  {study.client}
+                </h3>
+                <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-white/55">
+                  {study.summary}
+                </p>
               </Link>
             ))}
           </div>

@@ -54,5 +54,25 @@ export default function CaseStudyIcon({
           <path d="M3 12 L21 12 M4.5 7 L19.5 7 M4.5 17 L19.5 17" />
         </svg>
       );
+    case "megaphone":
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+          <path d="M2 10v4a2 2 0 002 2h1.5l1.2 5h2.1l-1.2-5H9l8 4V6l-8 4H4a2 2 0 00-2 2z" />
+          <path
+            d="M15.5 8.5a4.5 4.5 0 010 7"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M18.5 6a8 8 0 010 12"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </svg>
+      );
   }
 }
