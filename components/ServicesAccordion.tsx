@@ -14,8 +14,8 @@ export default function ServicesAccordion({ services }: { services: Service[] })
         return (
           <div
             key={service.title}
-            className={`overflow-hidden rounded-2xl border transition-colors ${
-              open ? "border-accent/60" : "border-white/10"
+            className={`overflow-hidden rounded-2xl border bg-black transition-colors ${
+              open ? "border-accent" : "border-accent/50 hover:border-accent/80"
             }`}
           >
             <button
@@ -38,8 +38,8 @@ export default function ServicesAccordion({ services }: { services: Service[] })
               </div>
 
               <span
-                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-lg leading-none text-white transition-transform duration-300 ${
-                  open ? "rotate-45 border-accent text-accent" : "border-white/20"
+                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border bg-black/40 text-lg leading-none text-white transition-transform duration-300 ${
+                  open ? "rotate-45 border-accent text-accent" : "border-white/25"
                 }`}
               >
                 +

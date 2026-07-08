@@ -5,14 +5,15 @@ import Button from "@/components/Button";
 import CTASection from "@/components/CTASection";
 import CaseStudyIcon from "@/components/CaseStudyIcon";
 import ServicesAccordion from "@/components/ServicesAccordion";
+import AnimatedStat from "@/components/AnimatedStat";
 import { CASE_STUDIES } from "@/lib/case-studies";
 import { SERVICES } from "@/lib/services";
 
 const STATS = [
-  { value: "120+", label: "Brands Elevated" },
-  { value: "3.2M", label: "Followers Grown" },
-  { value: "48", label: "Countries Reached" },
-  { value: "5x", label: "Avg. Engagement Lift" },
+  { value: "100+", label: "Brands Elevated" },
+  { value: "100K+", label: "Followers Growth" },
+  { value: "20+", label: "Countries Reached" },
+  { value: "5X", label: "Avg. Engagement Lift" },
 ];
 
 export default function Home() {
@@ -62,14 +63,7 @@ export default function Home() {
       <section className="border-y border-white/10 py-14">
         <Container className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           {STATS.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="font-display text-4xl text-accent sm:text-5xl">
-                {stat.value}
-              </div>
-              <div className="mt-2 text-xs tracking-wide text-white/50 sm:text-sm">
-                {stat.label}
-              </div>
-            </div>
+            <AnimatedStat key={stat.label} value={stat.value} label={stat.label} />
           ))}
         </Container>
       </section>
