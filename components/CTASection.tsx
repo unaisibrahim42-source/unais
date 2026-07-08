@@ -7,12 +7,14 @@ export default function CTASection({
   subtitle,
   buttonLabel = "Start a Project",
   buttonHref = "/about",
+  buttonSize = "md",
 }: {
   eyebrow?: string;
   title: string;
   subtitle?: string;
   buttonLabel?: string;
   buttonHref?: string;
+  buttonSize?: "md" | "lg";
 }) {
   return (
     <section className="relative overflow-hidden border-t border-white/10 py-28">
@@ -27,7 +29,7 @@ export default function CTASection({
         {subtitle && (
           <p className="mt-6 max-w-xl text-base text-white/60">{subtitle}</p>
         )}
-        <Button href={buttonHref} className="mt-10">
+        <Button href={buttonHref} size={buttonSize} className="mt-10">
           {buttonLabel}
         </Button>
       </Container>

@@ -19,7 +19,7 @@ const STATS = [
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden pb-24 pt-28 sm:pt-36">
+      <section className="relative overflow-hidden pb-24 pt-16 sm:pt-24">
         <div className="pointer-events-none absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-[140px]" />
         <Container className="relative">
           <div className="flex flex-col-reverse items-center gap-12 text-center lg:flex-row-reverse lg:items-center lg:justify-between lg:gap-10 lg:text-left">
@@ -42,13 +42,13 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex w-full flex-col items-center text-center lg:w-auto lg:flex-1 lg:-translate-y-24">
+            <div className="flex w-full flex-col items-center text-center lg:w-auto lg:flex-1 lg:-translate-y-32">
               <h1 className="max-w-lg font-display text-4xl leading-[0.95] text-white sm:text-5xl lg:text-6xl xl:text-7xl">
                 STOP BLENDING IN.
                 <br />
                 GET <span className="text-accent">UNMISSABLE</span>.
               </h1>
-              <Button href="/survey" className="mt-6">
+              <Button href="/survey" size="lg" className="mt-8">
                 Grow →
               </Button>
               <Image

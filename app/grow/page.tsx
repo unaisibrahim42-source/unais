@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Container from "@/components/Container";
 import CTASection from "@/components/CTASection";
+import Button from "@/components/Button";
 
 export const metadata: Metadata = {
   title: "Grow | Elevate Creative Media",
@@ -64,7 +65,11 @@ export default function GrowPage() {
           </>
         }
         description="Grow is our performance methodology — the system we run behind every brand, content, and media engagement to turn visibility into revenue."
-      />
+      >
+        <Button href="/survey" size="lg" className="mt-10">
+          Start Today →
+        </Button>
+      </PageHero>
 
       <section className="py-24">
         <Container>
@@ -137,6 +142,9 @@ export default function GrowPage() {
         eyebrow="Ready To Scale?"
         title="LET'S ENGINEER YOUR GROWTH"
         subtitle="Bring us your numbers. We'll show you exactly where the growth engine plugs in."
+        buttonLabel="Start Today →"
+        buttonHref="/survey"
+        buttonSize="lg"
       />
     </>
   );
