@@ -6,6 +6,7 @@ import CTASection from "@/components/CTASection";
 import ServicesAccordion from "@/components/ServicesAccordion";
 import AnimatedStat from "@/components/AnimatedStat";
 import AnimatedNumber from "@/components/AnimatedNumber";
+import ArrowMark from "@/components/ArrowMark";
 import { CASE_STUDIES, splitResultLabel } from "@/lib/case-studies";
 import { SERVICES } from "@/lib/services";
 
@@ -95,10 +96,13 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="border-t border-white/10 py-28">
-        <Container>
-          <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-            <div>
+      <section className="relative overflow-hidden border-t border-white/10 py-28">
+        <ArrowMark className="pointer-events-none absolute -right-6 -top-8 h-36 w-36 text-white/[0.06] sm:h-52 sm:w-52" />
+
+        <Container className="relative">
+          <div className="grid items-center gap-6 sm:grid-cols-[1fr_auto_1fr]">
+            <div className="hidden sm:block" />
+            <div className="text-center">
               <span className="font-display text-sm tracking-[0.3em] text-accent">
                 Proof, Not Promises
               </span>
@@ -108,12 +112,14 @@ export default function Home() {
                 SPEAK FOR THEMSELVES
               </h2>
             </div>
-            <Link
-              href="/case-studies"
-              className="underline-accent font-display text-sm tracking-wide text-white/70 hover:text-white"
-            >
-              View All Case Studies →
-            </Link>
+            <div className="flex justify-center sm:justify-end">
+              <Link
+                href="/case-studies"
+                className="underline-accent font-display text-sm tracking-wide text-white/70 hover:text-white"
+              >
+                View All Case Studies →
+              </Link>
+            </div>
           </div>
 
           <div className="mt-14 grid gap-6 md:grid-cols-3">
@@ -149,6 +155,9 @@ export default function Home() {
                     <h3 className="mt-2 font-display text-xl tracking-wide text-white">
                       {study.client}
                     </h3>
+                    <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-white/55">
+                      {study.summary}
+                    </p>
                   </div>
                 </Link>
               );

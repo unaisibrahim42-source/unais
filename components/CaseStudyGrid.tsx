@@ -61,6 +61,9 @@ export default function CaseStudyGrid() {
                 <h2 className="mt-2 font-display text-2xl tracking-wide text-white">
                   {study.client}
                 </h2>
+                <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-white/55">
+                  {study.summary}
+                </p>
                 <span className="underline-accent mt-4 inline-block font-display text-xs tracking-wide text-white/70 group-hover:text-white">
                   View Full Story →
                 </span>
