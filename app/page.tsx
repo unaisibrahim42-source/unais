@@ -149,9 +149,6 @@ export default function Home() {
                     <h3 className="mt-2 font-display text-xl tracking-wide text-white">
                       {study.client}
                     </h3>
-                    <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-white/55">
-                      {study.summary}
-                    </p>
                   </div>
                 </Link>
               );
