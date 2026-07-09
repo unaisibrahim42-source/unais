@@ -123,7 +123,7 @@ export default function Home() {
                 <Link
                   key={study.client}
                   href="/case-studies"
-                  className="group flex min-h-[240px] flex-col justify-between rounded-2xl border-2 border-accent/60 bg-black p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_40px_-12px_rgba(229,67,67,0.5)] sm:p-7"
+                  className="group flex flex-col justify-between gap-6 rounded-xl border-2 border-accent/60 bg-black p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_40px_-12px_rgba(229,67,67,0.5)] sm:p-6"
                 >
                   <span className="font-display text-[10px] tracking-[0.15em] text-white/50">
                     {study.tag}
@@ -146,9 +146,12 @@ export default function Home() {
                         </span>
                       )}
                     </div>
-                    <h3 className="mt-3 font-display text-xl tracking-wide text-white">
+                    <h3 className="mt-2 font-display text-xl tracking-wide text-white">
                       {study.client}
                     </h3>
+                    <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-white/55">
+                      {study.summary}
+                    </p>
                   </div>
                 </Link>
               );

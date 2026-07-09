@@ -35,7 +35,7 @@ export default function CaseStudyGrid() {
               key={study.client}
               type="button"
               onClick={() => setOpenIndex(i)}
-              className="group flex min-h-[260px] flex-col justify-between rounded-2xl border-2 border-accent/60 bg-black p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_40px_-12px_rgba(229,67,67,0.5)] sm:p-7"
+              className="group flex flex-col justify-between gap-6 rounded-xl border-2 border-accent/60 bg-black p-5 text-left transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_40px_-12px_rgba(229,67,67,0.5)] sm:p-6"
             >
               <span className="font-display text-[10px] tracking-[0.15em] text-white/50">
                 {study.tag}
@@ -58,9 +58,12 @@ export default function CaseStudyGrid() {
                     </span>
                   )}
                 </div>
-                <h2 className="mt-3 font-display text-2xl tracking-wide text-white">
+                <h2 className="mt-2 font-display text-2xl tracking-wide text-white">
                   {study.client}
                 </h2>
+                <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-white/55">
+                  {study.summary}
+                </p>
                 <span className="underline-accent mt-4 inline-block font-display text-xs tracking-wide text-white/70 group-hover:text-white">
                   View Full Story →
                 </span>
