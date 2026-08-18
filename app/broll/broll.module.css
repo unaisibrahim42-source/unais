@@ -222,192 +222,145 @@
   }
 }
 
-/* --- Keyword slides --- */
+/* --- Keywords: all three on screen together --- */
 
-.words {
-  position: absolute;
-  inset: 0;
-}
-
-.word {
+.stack {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 22px;
-  opacity: 0;
-  padding: 0 48px;
-  text-align: center;
+  gap: clamp(10px, 2.6vw, 20px);
+  padding: 0 40px;
 }
 
-.wordIcon {
-  width: 46px;
-  height: 46px;
+.line {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.lineIcon {
+  width: 30px;
+  height: 30px;
+  flex: none;
   color: #e54343;
 }
 
-.wordIcon svg {
+.lineIcon svg {
   width: 100%;
   height: 100%;
 }
 
-.wordText {
+.lineText {
   font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: 0.01em;
-  font-size: clamp(56px, 15vw, 108px);
+  font-size: clamp(38px, 10.8vw, 74px);
   line-height: 0.95;
   color: #0a0a0f;
+  white-space: nowrap;
 }
 
-.wordSub {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: rgba(10, 10, 15, 0.5);
+.line1 {
+  animation: lineReveal1 8s ease-in-out infinite;
 }
 
-.wordBar {
+.line2 {
+  animation: lineReveal2 8s ease-in-out infinite;
+}
+
+.line3 {
+  animation: lineReveal3 8s ease-in-out infinite;
+}
+
+@keyframes lineReveal1 {
+  0%,
+  4% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  11% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  88%,
+  100% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes lineReveal2 {
+  0%,
+  9% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  16% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  88%,
+  100% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes lineReveal3 {
+  0%,
+  14% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  21% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  88%,
+  100% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+
+.rule {
   width: 0%;
-  max-width: 220px;
+  max-width: 200px;
   height: 4px;
   background: #e54343;
+  margin-top: clamp(6px, 2vw, 14px);
+  animation: ruleGrow 8s ease-in-out infinite;
 }
 
-.word1 {
-  animation: word1 9s ease-in-out infinite;
-}
-
-.word1 .wordBar {
-  animation: bar1 9s ease-in-out infinite;
-}
-
-.word2 {
-  animation: word2 9s ease-in-out infinite;
-}
-
-.word2 .wordBar {
-  animation: bar2 9s ease-in-out infinite;
-}
-
-.word3 {
-  animation: word3 9s ease-in-out infinite;
-}
-
-.word3 .wordBar {
-  animation: bar3 9s ease-in-out infinite;
-}
-
-@keyframes word1 {
-  0% {
-    opacity: 0;
-    transform: translateY(26px);
-  }
-  5% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  28% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  33% {
-    opacity: 0;
-    transform: translateY(-26px);
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes word2 {
+@keyframes ruleGrow {
   0%,
-  33% {
-    opacity: 0;
-    transform: translateY(26px);
-  }
-  38% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  61% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  66% {
-    opacity: 0;
-    transform: translateY(-26px);
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes word3 {
-  0%,
-  66% {
-    opacity: 0;
-    transform: translateY(26px);
-  }
-  71% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  94% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  99% {
-    opacity: 0;
-    transform: translateY(-26px);
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes bar1 {
-  0%,
-  7% {
+  21% {
     width: 0%;
   }
-  20%,
-  33% {
+  30%,
+  80% {
     width: 100%;
   }
+  88%,
   100% {
-    width: 100%;
-  }
-}
-
-@keyframes bar2 {
-  0%,
-  40% {
     width: 0%;
-  }
-  53%,
-  66% {
-    width: 100%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-@keyframes bar3 {
-  0%,
-  73% {
-    width: 0%;
-  }
-  86%,
-  99% {
-    width: 100%;
-  }
-  100% {
-    width: 100%;
   }
 }
 
@@ -463,5 +416,15 @@
   .iconSpark,
   .dot {
     animation: none;
+  }
+
+  .line1,
+  .line2,
+  .line3,
+  .rule {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    width: 100%;
   }
 }

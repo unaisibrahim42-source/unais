@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// Swap these to change the 3 words on screen — each cycles for 3s in a 9s loop.
-const KEYWORDS: { word: string; sub: string; icon: "spark" | "engage" | "elevate" }[] = [
-  { word: "Attention", sub: "Stop the scroll", icon: "spark" },
-  { word: "Engage", sub: "Hold the room", icon: "engage" },
-  { word: "Elevate", sub: "Make it stick", icon: "elevate" },
+// Swap these to change the 3 words on screen — they stagger in together and hold as a group.
+const KEYWORDS: { word: string; icon: "spark" | "engage" | "elevate" }[] = [
+  { word: "Attention", icon: "spark" },
+  { word: "Engage", icon: "engage" },
+  { word: "Elevate", icon: "elevate" },
 ];
 
 const wordIcons: Record<string, React.ReactNode> = {
@@ -81,15 +81,14 @@ export default function BrollPage() {
           </svg>
         </div>
 
-        <div className={styles.words}>
+        <div className={styles.stack}>
           {KEYWORDS.map((k, i) => (
-            <div key={k.word} className={`${styles.word} ${styles[`word${i + 1}`]}`}>
-              <div className={styles.wordIcon}>{wordIcons[k.icon]}</div>
-              <div className={styles.wordText}>{k.word}</div>
-              <div className={styles.wordBar} />
-              <div className={styles.wordSub}>{k.sub}</div>
+            <div key={k.word} className={`${styles.line} ${styles[`line${i + 1}`]}`}>
+              <div className={styles.lineIcon}>{wordIcons[k.icon]}</div>
+              <div className={styles.lineText}>{k.word}</div>
             </div>
           ))}
+          <div className={styles.rule} />
         </div>
 
         <div className={styles.brand}>
