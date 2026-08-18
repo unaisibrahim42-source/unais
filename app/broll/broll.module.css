@@ -1,5 +1,6 @@
-/* Vertical (9:16) blueprint-style broll canvas for TikTok / Instagram Reels.
-   Letterboxes to black on wider viewports so the 1080x1920 frame stays intact. */
+/* Vertical (9:16) broll canvas for TikTok / Instagram Reels: black ground,
+   a rising growth-chart graphic, and an overlapping type collage —
+   letterboxes to black on wider viewports so the 1080x1920 frame stays intact. */
 
 .stage {
   position: fixed;
@@ -17,350 +18,303 @@
   aspect-ratio: 9 / 16;
   height: min(100vh, 177.78vw);
   width: min(100vw, 56.25vh);
-  background: #ffffff;
+  background: #060608;
   overflow: hidden;
   isolation: isolate;
 }
 
-/* --- Blueprint grid --- */
+/* --- Ground: glow + texture --- */
 
-.grid {
+.glow {
   position: absolute;
-  inset: -60px;
-  background-image:
-    linear-gradient(to right, rgba(37, 87, 210, 0.14) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(37, 87, 210, 0.14) 1px, transparent 1px),
-    linear-gradient(to right, rgba(37, 87, 210, 0.32) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(37, 87, 210, 0.32) 1px, transparent 1px);
-  background-size:
-    24px 24px,
-    24px 24px,
-    120px 120px,
-    120px 120px;
-  animation: gridDrift 24s linear infinite;
+  inset: -10%;
+  background:
+    radial-gradient(closest-side, rgba(229, 67, 67, 0.32) 0%, rgba(229, 67, 67, 0) 68%) 68% 34% / 90% 60% no-repeat,
+    radial-gradient(closest-side, rgba(80, 10, 20, 0.35) 0%, rgba(0, 0, 0, 0) 70%) 30% 78% / 80% 55% no-repeat;
+  animation: glowBreathe 10s ease-in-out infinite;
 }
 
-@keyframes gridDrift {
-  from {
-    background-position:
-      0 0,
-      0 0,
-      0 0,
-      0 0;
+@keyframes glowBreathe {
+  0%,
+  100% {
+    opacity: 0.85;
+    transform: scale(1);
   }
-  to {
-    background-position:
-      120px 120px,
-      120px 120px,
-      120px 120px,
-      120px 120px;
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
   }
+}
+
+.texture {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.05;
 }
 
 .vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse 70% 55% at 50% 50%,
-    rgba(255, 255, 255, 0.72) 0%,
-    rgba(255, 255, 255, 0) 65%
-  );
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 40%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.65) 100%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 18%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.55) 100%);
 }
 
-.scan {
+/* --- Growth chart graphic --- */
+
+.chart {
   position: absolute;
-  left: -10%;
-  right: -10%;
-  height: 140px;
-  background: linear-gradient(
-    to bottom,
-    rgba(37, 87, 210, 0) 0%,
-    rgba(37, 87, 210, 0.16) 50%,
-    rgba(37, 87, 210, 0) 100%
-  );
-  animation: scanMove 6s linear infinite;
+  top: 5%;
+  left: -4%;
+  width: 108%;
+  height: 58%;
 }
 
-@keyframes scanMove {
-  0% {
-    top: -12%;
-  }
-  100% {
-    top: 108%;
-  }
+.chartGrid line {
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 1;
 }
 
-/* --- Corner frame brackets --- */
-
-.corner {
-  position: absolute;
-  width: 34px;
-  height: 34px;
-  border: 2px solid #2557d2;
-  opacity: 0.55;
+.chartFill {
+  fill: url(#brollAreaFill);
+  opacity: 0.9;
 }
 
-.cornerTL {
-  top: 40px;
-  left: 40px;
-  border-right: none;
-  border-bottom: none;
+.chartLine {
+  fill: none;
+  stroke: #ff5b5b;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 10px rgba(255, 91, 91, 0.65));
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: chartDraw 2.6s cubic-bezier(0.22, 0.9, 0.3, 1) 0.2s forwards;
 }
 
-.cornerTR {
-  top: 40px;
-  right: 40px;
-  border-left: none;
-  border-bottom: none;
-}
-
-.cornerBL {
-  bottom: 40px;
-  left: 40px;
-  border-right: none;
-  border-top: none;
-}
-
-.cornerBR {
-  bottom: 40px;
-  right: 40px;
-  border-left: none;
-  border-top: none;
-}
-
-.tag {
-  position: absolute;
-  top: 64px;
-  left: 64px;
-  right: 50%;
-  font-family: var(--font-sans);
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  color: rgba(10, 10, 15, 0.45);
-  text-transform: uppercase;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.tagRight {
-  left: 50%;
-  right: 64px;
-  text-align: right;
-}
-
-/* --- Decorative marketing icons --- */
-
-.icon {
-  position: absolute;
-  color: #0a0a0f;
-}
-
-.iconAccent {
-  color: #e54343;
-}
-
-.icon svg {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.icon path,
-.icon circle,
-.icon polyline {
-  stroke-dasharray: 260;
-  stroke-dashoffset: 260;
-  animation: drawIcon 2.2s ease-out forwards;
-}
-
-.iconGrowth {
-  width: 76px;
-  height: 76px;
-  top: 130px;
-  left: 56px;
-  animation: floatY 7s ease-in-out infinite;
-}
-
-.iconTarget {
-  width: 64px;
-  height: 64px;
-  top: 128px;
-  right: 60px;
-  animation: floatY 8s ease-in-out infinite 0.5s;
-}
-
-.iconMega {
-  width: 66px;
-  height: 66px;
-  bottom: 150px;
-  left: 58px;
-  animation: floatY 7.5s ease-in-out infinite 1s;
-}
-
-.iconSpark {
-  width: 50px;
-  height: 50px;
-  bottom: 156px;
-  right: 62px;
-  animation: floatY 6.5s ease-in-out infinite 0.3s;
-}
-
-@keyframes drawIcon {
+@keyframes chartDraw {
   to {
     stroke-dashoffset: 0;
   }
 }
 
-@keyframes floatY {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
+.chartNode {
+  fill: #ff5b5b;
+  opacity: 0;
+  animation: nodeIn 0.4s ease-out forwards;
+}
+
+.chartPeak {
+  fill: #ffffff;
+  opacity: 0;
+  animation: nodeIn 0.4s ease-out 2.4s forwards;
+}
+
+@keyframes nodeIn {
+  to {
+    opacity: 1;
   }
 }
 
-/* --- Keywords: all three on screen together --- */
+.chartRing {
+  fill: none;
+  stroke: #ff5b5b;
+  stroke-width: 2.5;
+  transform-origin: center;
+  animation: ring 2.2s ease-out 2.5s infinite;
+}
 
-.stack {
+@keyframes ring {
+  0% {
+    r: 6;
+    opacity: 0.9;
+  }
+  100% {
+    r: 22;
+    opacity: 0;
+  }
+}
+
+.chartTag {
   position: absolute;
-  inset: 0;
+  top: 7%;
+  right: 8%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #ff5b5b;
+  opacity: 0;
+  animation: nodeIn 0.5s ease-out 2.6s forwards;
+}
+
+.chartTag::before {
+  content: "▲";
+  font-size: 10px;
+}
+
+/* --- Type collage --- */
+
+.collage {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 47%;
+  bottom: 14%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: clamp(10px, 2.6vw, 20px);
-  padding: 0 40px;
+  padding: 0 28px;
 }
 
-.line {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  opacity: 0;
-  transform: translateY(24px);
-}
-
-.lineIcon {
-  width: 30px;
-  height: 30px;
-  flex: none;
-  color: #e54343;
-}
-
-.lineIcon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.lineText {
-  font-family: var(--font-display);
+.word {
+  position: relative;
   text-transform: uppercase;
-  letter-spacing: 0.01em;
-  font-size: clamp(38px, 10.8vw, 74px);
-  line-height: 0.95;
-  color: #0a0a0f;
   white-space: nowrap;
+  opacity: 0;
 }
 
-.line1 {
-  animation: lineReveal1 8s ease-in-out infinite;
+.wordAttention {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 15.5vw, 96px);
+  line-height: 0.86;
+  color: #f5f5f7;
+  letter-spacing: 0.005em;
+  margin-left: 2%;
+  transform: rotate(-2deg) translateY(28px);
+  animation: popIn1 8s ease-in-out infinite;
 }
 
-.line2 {
-  animation: lineReveal2 8s ease-in-out infinite;
+.wordEngage {
+  font-family: var(--font-script);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(46px, 14.5vw, 92px);
+  line-height: 0.9;
+  color: #ff5b5b;
+  text-transform: none;
+  margin-left: 26%;
+  margin-top: -2%;
+  transform: rotate(2deg) translateY(28px);
+  animation: popIn2 8s ease-in-out infinite;
 }
 
-.line3 {
-  animation: lineReveal3 8s ease-in-out infinite;
+.wordElevate {
+  font-family: var(--font-display);
+  font-size: clamp(60px, 18vw, 112px);
+  line-height: 0.86;
+  color: #f5f5f7;
+  margin-left: 4%;
+  margin-top: -1%;
+  transform: rotate(-1.5deg) translateY(28px);
+  animation: popIn3 8s ease-in-out infinite;
 }
 
-@keyframes lineReveal1 {
+.elevateRule {
+  width: 92px;
+  height: 5px;
+  background: #ff5b5b;
+  margin-left: 5%;
+  margin-top: 10px;
+  transform: translateY(28px);
+  opacity: 0;
+  animation: popIn3 8s ease-in-out infinite;
+}
+
+@keyframes popIn1 {
   0%,
-  4% {
+  3% {
     opacity: 0;
-    transform: translateY(24px);
+    transform: rotate(-2deg) translateY(28px) scale(0.92);
   }
-  11% {
+  12% {
     opacity: 1;
-    transform: translateY(0);
+    transform: rotate(-2deg) translateY(0) scale(1);
   }
-  80% {
+  86% {
     opacity: 1;
-    transform: translateY(0);
+    transform: rotate(-2deg) translateY(0) scale(1);
   }
-  88%,
+  95%,
   100% {
     opacity: 0;
-    transform: translateY(-14px);
+    transform: rotate(-2deg) translateY(-14px) scale(0.97);
   }
 }
 
-@keyframes lineReveal2 {
+@keyframes popIn2 {
   0%,
   9% {
     opacity: 0;
-    transform: translateY(24px);
+    transform: rotate(2deg) translateY(28px) scale(0.92);
   }
-  16% {
+  18% {
     opacity: 1;
-    transform: translateY(0);
+    transform: rotate(2deg) translateY(0) scale(1);
   }
-  80% {
+  86% {
     opacity: 1;
-    transform: translateY(0);
+    transform: rotate(2deg) translateY(0) scale(1);
   }
-  88%,
+  95%,
   100% {
     opacity: 0;
-    transform: translateY(-14px);
+    transform: rotate(2deg) translateY(-14px) scale(0.97);
   }
 }
 
-@keyframes lineReveal3 {
+@keyframes popIn3 {
   0%,
-  14% {
+  15% {
     opacity: 0;
-    transform: translateY(24px);
+    transform: rotate(-1.5deg) translateY(28px) scale(0.92);
   }
-  21% {
+  24% {
     opacity: 1;
-    transform: translateY(0);
+    transform: rotate(-1.5deg) translateY(0) scale(1);
   }
-  80% {
+  86% {
     opacity: 1;
-    transform: translateY(0);
+    transform: rotate(-1.5deg) translateY(0) scale(1);
   }
-  88%,
+  95%,
   100% {
     opacity: 0;
-    transform: translateY(-14px);
+    transform: rotate(-1.5deg) translateY(-14px) scale(0.97);
   }
 }
 
-.rule {
-  width: 0%;
-  max-width: 200px;
-  height: 4px;
-  background: #e54343;
-  margin-top: clamp(6px, 2vw, 14px);
-  animation: ruleGrow 8s ease-in-out infinite;
+.kicker {
+  position: relative;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-left: 3%;
+  margin-bottom: 6px;
+  opacity: 0;
+  animation: kickerIn 8s ease-in-out infinite;
 }
 
-@keyframes ruleGrow {
+@keyframes kickerIn {
   0%,
-  21% {
-    width: 0%;
+  1% {
+    opacity: 0;
   }
-  30%,
-  80% {
-    width: 100%;
+  8%,
+  90% {
+    opacity: 1;
   }
-  88%,
+  97%,
   100% {
-    width: 0%;
+    opacity: 0;
   }
 }
 
@@ -370,7 +324,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 56px;
+  bottom: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -381,50 +335,48 @@
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: #e54343;
+  background: #ff5b5b;
   animation: dotPulse 2.4s ease-in-out infinite;
 }
 
 @keyframes dotPulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(229, 67, 67, 0.5);
+    box-shadow: 0 0 0 0 rgba(255, 91, 91, 0.5);
   }
   50% {
-    box-shadow: 0 0 0 10px rgba(229, 67, 67, 0);
+    box-shadow: 0 0 0 10px rgba(255, 91, 91, 0);
   }
 }
 
 .brandText {
   font-family: var(--font-sans);
   font-weight: 600;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: #0a0a0f;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .grid,
-  .scan,
-  .icon path,
-  .icon circle,
-  .icon polyline,
-  .iconGrowth,
-  .iconTarget,
-  .iconMega,
-  .iconSpark,
+  .glow,
+  .chartLine,
+  .chartNode,
+  .chartPeak,
+  .chartRing,
+  .chartTag,
   .dot {
     animation: none;
   }
 
-  .line1,
-  .line2,
-  .line3,
-  .rule {
+  .word,
+  .kicker {
     animation: none;
     opacity: 1;
     transform: none;
-    width: 100%;
+  }
+
+  .chartLine {
+    stroke-dashoffset: 0;
   }
 }
