@@ -116,10 +116,10 @@ export default function CaseStudyGrid() {
                 {active.client}
               </h2>
 
-              <div className="mt-8 sm:flex sm:gap-8">
+              <div className="mt-8">
                 {active.instagramUrl && (
-                  <div className="mx-auto w-full max-w-[220px] shrink-0 sm:mx-0">
-                    <div className="overflow-hidden rounded-2xl border border-white/10">
+                  <div className="mx-auto w-full max-w-sm">
+                    <div className="overflow-visible rounded-2xl border border-white/10">
                       <InstagramEmbed url={active.instagramUrl} />
                     </div>
                     <a
@@ -133,7 +133,7 @@ export default function CaseStudyGrid() {
                   </div>
                 )}
 
-                <div className="mt-8 min-w-0 flex-1 space-y-6 sm:mt-0">
+                <div className="mt-8 min-w-0 flex-1 space-y-6">
                   <div>
                     <span className="font-display text-xs tracking-[0.25em] text-accent">
                       The Challenge
