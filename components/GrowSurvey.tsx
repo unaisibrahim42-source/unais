@@ -302,8 +302,8 @@ export default function GrowSurvey() {
               {status === "error" && (
                 <p className="text-sm text-white/50">
                   Something went wrong. Email us directly at{" "}
-                  <a className="text-accent" href="mailto:uistudio9@gmail.com">
-                    uistudio9@gmail.com
+                  <a className="text-accent" href="mailto:Contact@Elevatemarketinguk.com">
+                    Contact@Elevatemarketinguk.com
                   </a>
                   .
                 </p>

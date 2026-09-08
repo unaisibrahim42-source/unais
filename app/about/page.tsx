@@ -106,10 +106,10 @@ export default function AboutPage() {
                   Email
                 </h3>
                 <a
-                  href="mailto:uistudio9@gmail.com"
+                  href="mailto:Contact@Elevatemarketinguk.com"
                   className="mt-2 block text-white transition-colors hover:text-accent"
                 >
-                  uistudio9@gmail.com
+                  Contact@Elevatemarketinguk.com
                 </a>
               </div>
               <div>
