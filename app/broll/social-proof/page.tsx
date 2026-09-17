@@ -21,57 +21,61 @@ export default function SocialProofBrollPage() {
   return (
     <div className={styles.stage}>
       <div className={`${styles.canvas} ${script.variable}`}>
-        <div className={styles.glow} />
-        <div className={styles.texture} />
+        <div className={styles.zoomWrap}>
+          <div className={styles.glow} />
+          <div className={styles.texture} />
 
-        <div className={styles.proof}>
-          <span className={styles.quoteMark} aria-hidden="true">
-            &ldquo;
-          </span>
-
-          <div className={styles.stars} aria-hidden="true">
-            {[0, 1, 2, 3, 4].map((i) => (
-              <svg
-                key={i}
-                className={styles.star}
-                viewBox="0 0 24 24"
-                style={{ animationDelay: `${0.3 + i * 0.15}s` }}
-              >
-                <path d={STAR_PATH} />
-              </svg>
-            ))}
-          </div>
-
-          <span className={styles.rating}>
-            <b>4.9</b> out of 5 — 1,240+ reviews
-          </span>
-
-          <div className={styles.avatars} aria-hidden="true">
-            {[0, 1, 2, 3].map((i) => (
-              <span
-                key={i}
-                className={`${styles.avatar} ${styles.avatarFill}`}
-                style={{ animationDelay: `${1.5 + i * 0.12}s` }}
-              />
-            ))}
-            <span className={`${styles.avatar} ${styles.avatarMore}`} style={{ animationDelay: "2.0s" }}>
-              +1.2K
+          <div className={styles.proof}>
+            <span className={styles.quoteMark} aria-hidden="true">
+              &ldquo;
             </span>
+
+            <div className={styles.stars} aria-hidden="true">
+              {[0, 1, 2, 3, 4].map((i) => (
+                <svg
+                  key={i}
+                  className={styles.star}
+                  viewBox="0 0 24 24"
+                  style={{ animationDelay: `${0.08 + i * 0.1}s` }}
+                >
+                  <path d={STAR_PATH} />
+                </svg>
+              ))}
+            </div>
+
+            <span className={styles.rating}>
+              <b>4.9</b> out of 5 — 1,240+ reviews
+            </span>
+
+            <div className={styles.avatars} aria-hidden="true">
+              {[0, 1, 2, 3].map((i) => (
+                <span
+                  key={i}
+                  className={`${styles.avatar} ${styles.avatarFill}`}
+                  style={{ animationDelay: `${0.75 + i * 0.08}s` }}
+                />
+              ))}
+              <span className={`${styles.avatar} ${styles.avatarMore}`} style={{ animationDelay: "1.07s" }}>
+                +1.2K
+              </span>
+            </div>
+          </div>
+
+          <span className={styles.proofTag}>Verified customers</span>
+
+          <div className={styles.vignette} />
+
+          <div className={styles.collage}>
+            <span className={`${styles.word} ${styles.kicker}`}>The proof —</span>
+            <span className={`${styles.word} ${styles.wordReviews}`}>Reviews.</span>
+            <span className={`${styles.word} ${styles.wordTestimonials}`}>Testimonials.</span>
+            <span className={`${styles.word} ${styles.wordExperience}`}>Real customer experience.</span>
+            <span className={styles.rule} />
+            <span className={styles.stat}>Trusted by 1,200+ businesses</span>
           </div>
         </div>
 
-        <span className={styles.proofTag}>Verified customers</span>
-
-        <div className={styles.vignette} />
-
-        <div className={styles.collage}>
-          <span className={`${styles.word} ${styles.kicker}`}>The proof —</span>
-          <span className={`${styles.word} ${styles.wordReviews}`}>Reviews.</span>
-          <span className={`${styles.word} ${styles.wordTestimonials}`}>Testimonials.</span>
-          <span className={`${styles.word} ${styles.wordExperience}`}>Real customer experience.</span>
-          <span className={styles.rule} />
-          <span className={styles.stat}>Trusted by 1,200+ businesses</span>
-        </div>
+        <div className={styles.flash} />
 
         <div className={styles.brand}>
           <span className={styles.dot} />
