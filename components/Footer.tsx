@@ -4,9 +4,8 @@ import Container from "@/components/Container";
 import { NAV_LINKS } from "@/lib/nav";
 
 const SOCIALS = [
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "TikTok", href: "https://tiktok.com" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
+  { label: "Instagram", href: "https://www.instagram.com/elevate.creativemarketing/" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/muhammad-unais-ibrahim-a02209311/" },
 ];
 
 export default function Footer() {
@@ -68,10 +67,10 @@ export default function Footer() {
               <ul className="mt-4 space-y-3">
                 <li>
                   <a
-                    href="mailto:uistudio9@gmail.com"
+                    href="mailto:Contact@Elevatemarketinguk.com"
                     className="text-sm text-white/70 transition-colors hover:text-accent"
                   >
-                    uistudio9@gmail.com
+                    Contact@Elevatemarketinguk.com
                   </a>
                 </li>
                 <li className="text-sm text-white/70">Midlands, United Kingdom</li>
