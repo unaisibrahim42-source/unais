@@ -4,9 +4,8 @@ import Container from "@/components/Container";
 import { NAV_LINKS } from "@/lib/nav";
 
 const SOCIALS = [
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "TikTok", href: "https://tiktok.com" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
+  { label: "Instagram", href: "https://www.instagram.com/elevate.creativemarketing/" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/muhammad-unais-ibrahim-a02209311/" },
 ];
 
 export default function Footer() {
