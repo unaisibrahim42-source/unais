@@ -23,6 +23,7 @@ export default function Home() {
     <>
       <section className="relative overflow-hidden bg-dots pb-24 pt-16 sm:pt-24">
         <div className="pointer-events-none absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-[140px]" />
+        <ClientLogoBubbles />
         <Container className="relative">
           <div className="flex flex-col items-center gap-16 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
             <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
@@ -46,7 +47,6 @@ export default function Home() {
             </div>
 
             <div className="relative flex flex-col items-center">
-              <ClientLogoBubbles />
               <Image
                 src="/logo.png"
                 alt="Elevate Creative Media"
