@@ -7,6 +7,7 @@ import ServicesAccordion from "@/components/ServicesAccordion";
 import AnimatedStat from "@/components/AnimatedStat";
 import AnimatedNumber from "@/components/AnimatedNumber";
 import ArrowMark from "@/components/ArrowMark";
+import ClientLogoBubbles from "@/components/ClientLogoBubbles";
 import { CASE_STUDIES, splitResultLabel } from "@/lib/case-studies";
 import { SERVICES } from "@/lib/services";
 
@@ -44,7 +45,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex flex-col items-center">
+            <div className="relative flex flex-col items-center">
+              <ClientLogoBubbles />
               <Image
                 src="/logo.png"
                 alt="Elevate Creative Media"
