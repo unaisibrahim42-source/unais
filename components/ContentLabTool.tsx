@@ -3,10 +3,14 @@
 import { useEffect, useMemo, useState } from "react";
 import {
   buildBreakdown,
+  defaultCtaForFunnel,
   defaultFunnelForPillar,
   generateConcept,
+  generateIdeaBank,
+  styleStats,
   suggestHookStyle,
   suggestPillar,
+  uid,
   PILLARS,
   HOOK_STYLES,
   FUNNEL_INFO,
@@ -14,11 +18,13 @@ import {
   type FunnelStage,
   type GeneratedConcept,
   type HookStyleId,
+  type IdeaCard,
   type PillarId,
   type SavedIdea,
 } from "@/lib/content-lab";
 
 const STORAGE_KEY = "zezu-content-lab-ideas";
+const BANKS_STORAGE_KEY = "zezu-content-lab-idea-banks";
 
 const PLATFORMS = ["TikTok", "Instagram Reels", "YouTube Shorts", "Other"] as const;
 
@@ -30,10 +36,6 @@ const CTA_TYPES: { id: CtaTypeId; label: string }[] = [
   { id: "order-now", label: "Order now" },
   { id: "book-now", label: "Book now" },
 ];
-
-function uid(): string {
-  return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-}
 
 function badgeColor(stage: FunnelStage): string {
   if (stage === "TOFU") return "bg-sky-500/15 text-sky-300 border-sky-500/40";
@@ -67,6 +69,18 @@ export default function ContentLabTool() {
   const [activeIdeaId, setActiveIdeaId] = useState<string | null>(null);
   const [concept, setConcept] = useState<GeneratedConcept | null>(null);
 
+  // 20-idea banks, keyed by content pillar
+  const [ideaBanks, setIdeaBanks] = useState<Partial<Record<PillarId, IdeaCard[]>>>(() => {
+    if (typeof window === "undefined") return {};
+    try {
+      const raw = localStorage.getItem(BANKS_STORAGE_KEY);
+      return raw ? (JSON.parse(raw) as Partial<Record<PillarId, IdeaCard[]>>) : {};
+    } catch {
+      return {};
+    }
+  });
+  const [openBanks, setOpenBanks] = useState<Set<PillarId>>(new Set());
+
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(ideas));
@@ -74,6 +88,14 @@ export default function ContentLabTool() {
       // ignore unavailable storage (private mode, quota, etc.)
     }
   }, [ideas]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(BANKS_STORAGE_KEY, JSON.stringify(ideaBanks));
+    } catch {
+      // ignore unavailable storage (private mode, quota, etc.)
+    }
+  }, [ideaBanks]);
 
   function applySuggestions(text: string) {
     setReference(text);
@@ -128,6 +150,62 @@ export default function ContentLabTool() {
   }
 
   const breakdown = useMemo(() => buildBreakdown(ideas), [ideas]);
+  const stats = useMemo(() => styleStats(ideas), [ideas]);
+
+  function generateBank(pillarId: PillarId) {
+    const stage = defaultFunnelForPillar(pillarId);
+    const bank = generateIdeaBank(
+      pillarId,
+      dish.split(","),
+      brand,
+      stage,
+      defaultCtaForFunnel(stage),
+      20
+    );
+    setIdeaBanks((prev) => ({ ...prev, [pillarId]: bank }));
+    setOpenBanks((prev) => new Set(prev).add(pillarId));
+  }
+
+  function generateAllBanks() {
+    const next: Partial<Record<PillarId, IdeaCard[]>> = { ...ideaBanks };
+    const opened = new Set(openBanks);
+    for (const stat of stats) {
+      const stage = defaultFunnelForPillar(stat.pillar);
+      next[stat.pillar] = generateIdeaBank(
+        stat.pillar,
+        dish.split(","),
+        brand,
+        stage,
+        defaultCtaForFunnel(stage),
+        20
+      );
+      opened.add(stat.pillar);
+    }
+    setIdeaBanks(next);
+    setOpenBanks(opened);
+  }
+
+  function toggleBankOpen(pillarId: PillarId) {
+    setOpenBanks((prev) => {
+      const next = new Set(prev);
+      if (next.has(pillarId)) next.delete(pillarId);
+      else next.add(pillarId);
+      return next;
+    });
+  }
+
+  function toggleIdeaDone(pillarId: PillarId, itemId: string) {
+    setIdeaBanks((prev) => {
+      const bank = prev[pillarId];
+      if (!bank) return prev;
+      return {
+        ...prev,
+        [pillarId]: bank.map((item) =>
+          item.id === itemId ? { ...item, done: !item.done } : item
+        ),
+      };
+    });
+  }
 
   return (
     <div className="space-y-20">
@@ -283,14 +361,17 @@ export default function ContentLabTool() {
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           <div>
             <label className="block text-xs font-display tracking-[0.15em] text-white/50">
-              Dish to feature
+              Dish(es) to feature
             </label>
             <input
               value={dish}
               onChange={(e) => setDish(e.target.value)}
-              placeholder="e.g. truffle fried rice"
+              placeholder="e.g. truffle fried rice, bao buns, dumplings"
               className="mt-2 w-full rounded-lg border border-white/15 bg-white/5 p-2.5 text-sm text-white placeholder:text-white/35 focus:border-accent focus:outline-none"
             />
+            <p className="mt-1.5 text-[11px] text-white/35">
+              Comma-separate a few for more variety across the 20-idea banks below.
+            </p>
           </div>
           <div>
             <label className="block text-xs font-display tracking-[0.15em] text-white/50">
@@ -371,12 +452,165 @@ export default function ContentLabTool() {
         )}
       </section>
 
+      {/* Content styles that work */}
+      <section>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 className="font-display text-2xl text-white sm:text-3xl">
+              3. Content Styles That Work
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm text-white/55">
+              The content pillars actually showing up across the references
+              you&apos;ve saved, ranked by how often they appear. Generate 20
+              fresh ideas for any of them so you&apos;ve got a range to pick from.
+            </p>
+          </div>
+          {stats.length > 0 && (
+            <button
+              type="button"
+              onClick={generateAllBanks}
+              className="shrink-0 rounded-full bg-gradient-to-b from-accent to-[#b93232] px-6 py-2.5 font-display text-xs tracking-wide text-white shadow-[0_0_24px_-6px_rgba(229,67,67,0.7)] transition-all hover:scale-105 hover:brightness-110"
+            >
+              Generate 20 For Every Style
+            </button>
+          )}
+        </div>
+
+        {stats.length === 0 ? (
+          <p className="mt-8 rounded-xl border border-dashed border-white/15 p-8 text-center text-sm text-white/40">
+            Save a few reference ideas above — once there&apos;s a pattern, we&apos;ll
+            tell you which styles are working.
+          </p>
+        ) : (
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {stats.map((stat) => (
+              <div
+                key={stat.pillar}
+                className="flex flex-col justify-between gap-4 rounded-xl border border-white/10 bg-black p-5"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-3">
+                    <h3 className="font-display text-lg text-white">{stat.label}</h3>
+                    <span className="shrink-0 font-display text-xs text-accent">
+                      {stat.pct}% of saved ideas
+                    </span>
+                  </div>
+                  <p className="mt-2 text-sm text-white/55">{stat.blurb}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => generateBank(stat.pillar)}
+                  className="self-start rounded-full border-2 border-accent px-5 py-2 font-display text-xs tracking-wide text-white transition-all hover:scale-105 hover:bg-accent/10"
+                >
+                  {ideaBanks[stat.pillar] ? "Regenerate 20 Ideas" : "Generate 20 Ideas"}
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {stats
+          .filter((stat) => ideaBanks[stat.pillar]?.length)
+          .map((stat) => {
+            const bank = ideaBanks[stat.pillar]!;
+            const open = openBanks.has(stat.pillar);
+            const doneCount = bank.filter((item) => item.done).length;
+            return (
+              <div key={stat.pillar} className="mt-8 rounded-2xl border border-white/10 p-5 sm:p-6">
+                <button
+                  type="button"
+                  onClick={() => toggleBankOpen(stat.pillar)}
+                  className="flex w-full items-center justify-between gap-3 text-left"
+                >
+                  <h3 className="font-display text-lg text-white">
+                    {stat.label} — 20 Ideas
+                  </h3>
+                  <span className="flex items-center gap-3 text-xs text-white/50">
+                    {doneCount}/{bank.length} done
+                    <span
+                      className={`flex h-7 w-7 items-center justify-center rounded-full border border-white/25 transition-transform ${
+                        open ? "rotate-45" : ""
+                      }`}
+                    >
+                      +
+                    </span>
+                  </span>
+                </button>
+
+                {open && (
+                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                    {bank.map((item) => (
+                      <div
+                        key={item.id}
+                        className={`rounded-xl border p-4 transition-colors ${
+                          item.done
+                            ? "border-emerald-500/50 bg-emerald-500/5"
+                            : "border-white/10 bg-black"
+                        }`}
+                      >
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="min-w-0">
+                            <span className="rounded-full border border-white/15 px-2 py-0.5 text-[10px] text-white/50">
+                              {HOOK_STYLES.find((h) => h.id === item.hookStyle)?.label}
+                            </span>
+                            <p
+                              className={`mt-2 text-sm leading-snug ${
+                                item.done ? "text-white/40 line-through" : "text-white"
+                              }`}
+                            >
+                              &ldquo;{item.hook}&rdquo;
+                            </p>
+                            <p className="mt-1 text-xs text-white/35">{item.dish}</p>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => toggleIdeaDone(stat.pillar, item.id)}
+                            aria-pressed={item.done}
+                            aria-label={item.done ? "Mark as not done" : "Mark as done"}
+                            className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-sm transition-colors ${
+                              item.done
+                                ? "border-emerald-500 bg-emerald-500 text-black"
+                                : "border-white/25 text-transparent hover:border-emerald-400"
+                            }`}
+                          >
+                            ✓
+                          </button>
+                        </div>
+
+                        <details className="mt-3">
+                          <summary className="cursor-pointer text-xs text-white/50 hover:text-accent">
+                            View shot list
+                          </summary>
+                          <div className="mt-2 space-y-1.5 text-xs leading-relaxed text-white/55">
+                            {item.shotList.map((shot) => (
+                              <p key={shot.shot}>
+                                <span className="text-accent">{shot.shot}.</span>{" "}
+                                {shot.type} ({shot.durationSec}) — {shot.direction}
+                                {shot.onScreenCaption && (
+                                  <span className="text-white"> &ldquo;{shot.onScreenCaption}&rdquo;</span>
+                                )}
+                              </p>
+                            ))}
+                            <p className="pt-1 text-white/70">
+                              <span className="text-accent">CTA:</span> {item.cta}
+                            </p>
+                          </div>
+                        </details>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+      </section>
+
       {/* Generated concept */}
       {concept && (
         <section>
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2 className="font-display text-2xl text-white sm:text-3xl">
-              3. Zezu Remix Concept
+              4. Zezu Remix Concept
             </h2>
             <button
               type="button"
@@ -477,7 +711,7 @@ export default function ContentLabTool() {
       {/* Breakdown */}
       <section>
         <h2 className="font-display text-2xl text-white sm:text-3xl">
-          4. Pattern Breakdown
+          5. Pattern Breakdown
         </h2>
         <p className="mt-2 max-w-2xl text-sm text-white/55">
           What&apos;s actually in common across every idea you&apos;ve saved — the

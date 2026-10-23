@@ -42,6 +42,28 @@ export type ShotListItem = {
 
 export type ViralCheck = { label: string; met: boolean };
 
+export type IdeaCard = {
+  id: string;
+  hook: string;
+  hookStyle: HookStyleId;
+  dish: string;
+  shotList: ShotListItem[];
+  cta: string;
+  done: boolean;
+};
+
+export type PillarStat = {
+  pillar: PillarId;
+  label: string;
+  blurb: string;
+  count: number;
+  pct: number;
+};
+
+export function uid(): string {
+  return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+}
+
 export type GeneratedConcept = {
   pillar: PillarId;
   hookStyle: HookStyleId;
@@ -183,38 +205,48 @@ export function suggestHookStyle(text: string): HookStyleId {
   return "visual-payoff";
 }
 
+type HookTemplate = (dish: string, brand: string) => string;
+
+const HOOK_TEMPLATES: Record<HookStyleId, HookTemplate[]> = {
+  pov: [
+    (dish) => `POV: you just found the best ${dish} in Leicester`,
+    (dish, brand) => `POV: ${brand} hands you the ${dish} and your night is made`,
+    (dish, brand) => `POV: you're about to try ${brand}'s ${dish} for the first time`,
+  ],
+  "visual-payoff": [
+    (dish) => `Wait for the ${dish} reveal...`,
+    (dish) => `Nobody warned me the ${dish} looked like this`,
+    (dish) => `Watch till the end — the ${dish} payoff is worth it`,
+  ],
+  "controversial-claim": [
+    () => `You've been ordering Chinese food wrong — here's what to get instead`,
+    () => `This is NOT what I expected from a Chinese restaurant in Leicester`,
+    (dish, brand) => `Unpopular opinion: ${brand}'s ${dish} beats the "authentic" version`,
+  ],
+  "numbered-list": [
+    (dish, brand) => `3 dishes at ${brand} you need to try before everyone finds out`,
+    (dish, brand) => `Rating every must-try dish at ${brand} so you don't have to`,
+    (dish, brand) => `5 reasons ${brand}'s ${dish} is worth the hype`,
+  ],
+  "price-shock": [
+    (dish) => `This ${dish} costs less than your coffee order — here's what you get`,
+    (dish, brand) => `How much food £10 gets you at ${brand}`,
+    (dish, brand) => `£ for £, is ${brand}'s ${dish} the best value in Leicester?`,
+  ],
+  "sound-led": [
+    (dish) => `[No caption — let the sizzle of the ${dish} hit first]`,
+    (dish) => `[Open on sound: pour / crunch / sizzle of the ${dish}, text appears after 2s]`,
+    (dish) => `[Cold open on the ${dish} sound, caption drops on beat 2]`,
+  ],
+  question: [
+    (dish, brand) => `Why is nobody talking about ${brand}'s ${dish}?`,
+    (dish) => `Is this the best ${dish} in Leicester?`,
+    (dish, brand) => `Would you queue for ${brand}'s ${dish}?`,
+  ],
+};
+
 function hookLine(style: HookStyleId, dish: string, brand: string): string {
-  const lines: Record<HookStyleId, string[]> = {
-    pov: [
-      `POV: you just found the best ${dish} in Leicester`,
-      `POV: ${brand} hands you the ${dish} and your night is made`,
-    ],
-    "visual-payoff": [
-      `Wait for the ${dish} reveal...`,
-      `Nobody warned me the ${dish} looked like this`,
-    ],
-    "controversial-claim": [
-      `You've been ordering Chinese food wrong — here's what to get instead`,
-      `This is NOT what I expected from a Chinese restaurant in Leicester`,
-    ],
-    "numbered-list": [
-      `3 dishes at ${brand} you need to try before everyone finds out`,
-      `Rating every must-try dish at ${brand} so you don't have to`,
-    ],
-    "price-shock": [
-      `This ${dish} costs less than your coffee order — here's what you get`,
-      `How much food £10 gets you at ${brand}`,
-    ],
-    "sound-led": [
-      `[No caption — let the sizzle of the ${dish} hit first]`,
-      `[Open on sound: pour / crunch / sizzle of the ${dish}, text appears after 2s]`,
-    ],
-    question: [
-      `Why is nobody talking about ${brand}'s ${dish}?`,
-      `Is this the best ${dish} in Leicester?`,
-    ],
-  };
-  return lines[style][0];
+  return HOOK_TEMPLATES[style][0](dish, brand);
 }
 
 type ShotTemplateInput = { dish: string; brand: string };
@@ -347,6 +379,71 @@ export function generateConcept(
     cta: ctaOptions[0],
     viralChecklist: viralChecklist(pillar, hookStyle),
   };
+}
+
+const FUNNEL_DEFAULT_CTA: Record<FunnelStage, CtaTypeId> = {
+  TOFU: "follow",
+  MOFU: "save",
+  BOFU: "order-now",
+};
+
+export function defaultCtaForFunnel(stage: FunnelStage): CtaTypeId {
+  return FUNNEL_DEFAULT_CTA[stage];
+}
+
+export function generateIdeaBank(
+  pillar: PillarId,
+  dishes: string[],
+  brand: string,
+  funnelStage: FunnelStage,
+  ctaType: CtaTypeId,
+  count = 20
+): IdeaCard[] {
+  const safeBrand = brand.trim() || "Zezu";
+  const dishList = dishes.map((d) => d.trim()).filter(Boolean);
+  const safeDishes = dishList.length > 0 ? dishList : ["signature dish"];
+  const cta = CTA_LIBRARY[funnelStage][ctaType][0];
+
+  const combos: { hookStyle: HookStyleId; templateIndex: number }[] = [];
+  for (const style of HOOK_STYLES) {
+    for (let t = 0; t < HOOK_TEMPLATES[style.id].length; t++) {
+      combos.push({ hookStyle: style.id, templateIndex: t });
+    }
+  }
+
+  const items: IdeaCard[] = [];
+  for (let i = 0; i < count; i++) {
+    const combo = combos[i % combos.length];
+    const dish = safeDishes[i % safeDishes.length];
+    const hook = HOOK_TEMPLATES[combo.hookStyle][combo.templateIndex](dish, safeBrand);
+    items.push({
+      id: uid(),
+      hook,
+      hookStyle: combo.hookStyle,
+      dish,
+      shotList: shotTemplates(pillar, { dish, brand: safeBrand }),
+      cta,
+      done: false,
+    });
+  }
+  return items;
+}
+
+export function styleStats(ideas: SavedIdea[]): PillarStat[] {
+  const total = ideas.length || 1;
+  const counts = new Map<PillarId, number>();
+  for (const idea of ideas) {
+    counts.set(idea.pillar, (counts.get(idea.pillar) ?? 0) + 1);
+  }
+  return PILLARS.map((p) => ({
+    pillar: p.id,
+    label: p.label,
+    blurb: p.blurb,
+    count: counts.get(p.id) ?? 0,
+    pct: Math.round(((counts.get(p.id) ?? 0) / total) * 100),
+  }))
+    .filter((s) => s.count > 0)
+    .sort((a, b) => b.count - a.count);
 }
 
 export function defaultFunnelForPillar(pillar: PillarId): FunnelStage {
