@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Anton, Inter } from "next/font/google";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import "./globals.css";
 
 const anton = Anton({
@@ -16,9 +14,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Elevate Creative Media | We Make You Unmissable",
-  description:
-    "Elevate Creative Media is a creative agency built for brands that refuse to blend in. Strategy, content, and growth that get you seen.",
+  title: "Elevate Creative Media",
+  description: "Elevate Creative Media — agency site and internal CRM.",
 };
 
 export default function RootLayout({
@@ -32,9 +29,7 @@ export default function RootLayout({
       className={`${anton.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
