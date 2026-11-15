@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+/* Colour values come from site.config.ts (injected in app/layout.tsx). */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-accent: var(--accent);
+  --font-display: var(--font-display), "Times New Roman", serif;
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+body {
+  font-family: var(--font-sans);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 10px 40px -12px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+}
+
+::selection { background: var(--accent); color: white; }

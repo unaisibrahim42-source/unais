@@ -1,0 +1,38 @@
+{
+  "title": "Garden-Square Apartment, Chelsea",
+  "price": 3950,
+  "currency": "GBP",
+  "priceSuffix": "pcm",
+  "status": "To let",
+  "beds": 1,
+  "baths": 1,
+  "sqft": 684,
+  "location": "Chelsea, London SW3",
+  "address": "Placeholder Square, London SW3",
+  "lat": 51.4875,
+  "lng": -0.1687,
+  "featured": false,
+  "summary": "A furnished one-bedroom apartment overlooking a leafy garden square, moments from the King's Road.",
+  "description": "Set behind a classic Victorian facade, this furnished apartment pairs period proportions with a crisp modern finish. The reception room flows into a dining area with views across the square, and the bedroom has room for a king-size bed.\n\nAll details on this listing are placeholders for demonstration.",
+  "features": [
+    "Furnished",
+    "Overlooks a garden square",
+    "Engineered oak floors",
+    "Washer-dryer",
+    "Available immediately",
+    "EPC rating D"
+  ],
+  "rooms": {
+    "living": { "name": "Reception room", "size": "5.1m × 4.0m" },
+    "dining": { "name": "Dining area", "size": "3.0m × 2.6m" },
+    "kitchen": { "name": "Galley kitchen", "size": "2.9m × 2.4m" },
+    "bedroom": { "name": "Bedroom", "size": "3.8m × 3.2m" },
+    "view": { "name": "Over the square" }
+  },
+  "agent": {
+    "name": "James Okafor",
+    "role": "Lettings Manager",
+    "phone": "+44 20 0000 0001",
+    "email": "james@example.com"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "title": "Top-Floor Mansion Flat, Kensington",
+  "price": 1450000,
+  "currency": "GBP",
+  "status": "For sale",
+  "beds": 2,
+  "baths": 1,
+  "sqft": 912,
+  "location": "Kensington, London W8",
+  "address": "Placeholder Gardens, London W8",
+  "lat": 51.4991,
+  "lng": -0.1925,
+  "featured": true,
+  "summary": "A light-filled top-floor apartment in a red-brick Victorian mansion block, with a vaulted reception room overlooking the plane trees.",
+  "description": "Placed on the top floor of a handsome red-brick mansion block, this two-bedroom apartment has been finished with an eye for detail throughout. The vaulted reception room is the heart of the home, with dormer windows framing the treetops, wide-plank oak floors and space for both a lounge and a dining table for six.\n\nThe kitchen is fitted with high-gloss cabinetry, marble worktops and integrated appliances. The principal bedroom looks out over the garden square, and the building benefits from a porter and a lift.\n\nAll details on this listing are placeholders for demonstration.",
+  "features": [
+    "Top floor with lift",
+    "Vaulted reception room with dormer windows",
+    "Wide-plank oak flooring",
+    "Marble kitchen worktops",
+    "Porter service",
+    "Share of freehold",
+    "EPC rating C",
+    "Council tax band F"
+  ],
+  "rooms": {
+    "living": { "name": "Vaulted reception room", "size": "6.4m × 4.8m" },
+    "dining": { "name": "Dining area", "size": "3.2m × 3.0m" },
+    "kitchen": { "name": "Kitchen", "size": "2.9m × 2.4m" },
+    "bedroom": { "name": "Principal bedroom", "size": "4.1m × 3.3m" },
+    "exterior-front": { "name": "Red-brick mansion block" }
+  },
+  "agent": {
+    "name": "Charlotte Hale",
+    "role": "Sales Director",
+    "phone": "+44 20 0000 0000",
+    "email": "charlotte@example.com"
+  }
+}
