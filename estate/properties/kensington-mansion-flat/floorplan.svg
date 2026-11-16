@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" font-family="Georgia, serif" fill="none" stroke="#16140f">
+  <rect width="1000" height="640" fill="#fff" stroke="none"/>
+  <g stroke-width="6">
+    <rect x="60" y="60" width="880" height="500"/>
+  </g>
+  <g stroke-width="3">
+    <line x1="480" y1="60" x2="480" y2="330"/>
+    <line x1="60" y1="330" x2="300" y2="330"/>
+    <line x1="360" y1="330" x2="940" y2="330"/>
+    <line x1="300" y1="330" x2="300" y2="560"/>
+    <line x1="640" y1="330" x2="640" y2="560"/>
+    <line x1="780" y1="330" x2="780" y2="560"/>
+    <line x1="700" y1="60" x2="700" y2="330"/>
+  </g>
+  <g stroke="#fff" stroke-width="8">
+    <line x1="480" y1="150" x2="480" y2="210"/>
+    <line x1="315" y1="330" x2="345" y2="330"/>
+    <line x1="560" y1="330" x2="610" y2="330"/>
+    <line x1="700" y1="200" x2="700" y2="250"/>
+    <line x1="700" y1="330" x2="750" y2="330"/>
+    <line x1="840" y1="330" x2="880" y2="330"/>
+    <line x1="150" y1="60" x2="240" y2="60"/>
+    <line x1="330" y1="60" x2="420" y2="60"/>
+    <line x1="560" y1="60" x2="640" y2="60"/>
+  </g>
+  <g stroke="#16140f" stroke-width="1.5">
+    <line x1="150" y1="56" x2="240" y2="56"/><line x1="150" y1="64" x2="240" y2="64"/>
+    <line x1="330" y1="56" x2="420" y2="56"/><line x1="330" y1="64" x2="420" y2="64"/>
+    <line x1="560" y1="56" x2="640" y2="56"/><line x1="560" y1="64" x2="640" y2="64"/>
+  </g>
+  <g fill="#16140f" stroke="none" text-anchor="middle">
+    <text x="270" y="190" font-size="26">Reception</text>
+    <text x="270" y="220" font-size="16" fill="#6f6a60">6.4m × 4.8m</text>
+    <text x="590" y="190" font-size="22">Dining</text>
+    <text x="590" y="216" font-size="15" fill="#6f6a60">3.2m × 3.0m</text>
+    <text x="820" y="190" font-size="22">Kitchen</text>
+    <text x="820" y="216" font-size="15" fill="#6f6a60">2.9m × 2.4m</text>
+    <text x="180" y="450" font-size="22">Principal bedroom</text>
+    <text x="180" y="476" font-size="15" fill="#6f6a60">4.1m × 3.3m</text>
+    <text x="470" y="450" font-size="22">Bedroom 2</text>
+    <text x="470" y="476" font-size="15" fill="#6f6a60">3.4m × 2.6m</text>
+    <text x="710" y="450" font-size="20">Bath</text>
+    <text x="860" y="450" font-size="20">Hall</text>
+    <text x="500" y="610" font-size="14" fill="#6f6a60" letter-spacing="3">TOP FLOOR · APPROX. 912 SQ FT · PLACEHOLDER PLAN, NOT TO SCALE</text>
+  </g>
+</svg>

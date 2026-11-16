@@ -4,8 +4,11 @@ import { body, display } from "./fonts";
 import { site } from "@/site.config";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Reveals } from "@/components/Reveals";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: { default: `${site.name} — ${site.tagline}`, template: `%s · ${site.name}` },
   description: site.description,
 };
@@ -22,8 +25,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body className="min-h-screen bg-paper text-ink">
         <SmoothScroll />
+        <Reveals />
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
